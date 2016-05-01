@@ -5,7 +5,8 @@ SOURCE = 	algorithms.cs					\
 			point.cs						\
 			cartesian.cs					\
 			polar.cs						\
-			turtle.cs
+			turtle.cs						\
+			context.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

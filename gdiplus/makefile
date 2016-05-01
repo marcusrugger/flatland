@@ -1,5 +1,6 @@
 
-SOURCE = 	turtle.cs
+SOURCE = 	context.cs		\
+			turtle.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1
