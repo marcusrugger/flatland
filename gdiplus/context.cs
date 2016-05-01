@@ -11,8 +11,13 @@ public class Context : Flatland.Common.Context
     Drawing.Graphics    graphics;
     Drawing.Pen         currentPen;
     Drawing.Brush       currentBrush;
+    
+    public Context Create(Drawing.Graphics graphics)
+    {
+        return new Context(graphics);
+    }
 
-    public Context(Drawing.Graphics graphics) : base()
+    private Context(Drawing.Graphics graphics) : base()
     {
         this.graphics       = graphics;
         this.currentPen     = Drawing.Pens.Black;
@@ -33,6 +38,16 @@ public class Context : Flatland.Common.Context
         this.currentBrush   = newBrush;
     }
 
+    public Context SetPen(Flatland.Color color)
+    {
+        return new Context( this, CreateGdiPen(color) );
+    }
+
+    public Context SetBrush(Flatland.Color color)
+    {
+        return new Context( this, CreateGdiBrush(color) );
+    }
+
     public Drawing.Graphics Graphics
     {
         get { return graphics; }
@@ -48,26 +63,11 @@ public class Context : Flatland.Common.Context
         get { return currentBrush; }
     }
 
-    public override Flatland.Context SetLineColor(Flatland.Color color)
-    {
-        return new Context( this, CreateGdiPen(color) );
-    }
-
-    public override Flatland.Context SetFillColor(Color color)
-    {
-        return new Context( this, CreateGdiBrush(color) );
-    }
-
-    public override Flatland.Turtle NewTurtle()
-    {
-        return new Turtle(this);
-    }
-    
     private Drawing.Brush CreateGdiBrush(Flatland.Color color)
     {
         return new Drawing.SolidBrush( ToGdiColor(color) );
     }
-    
+
     private Drawing.Pen CreateGdiPen(Flatland.Color color)
     {
         return new Drawing.Pen( ToGdiColor(color) );
@@ -76,6 +76,24 @@ public class Context : Flatland.Common.Context
     private Drawing.Color ToGdiColor(Flatland.Color color)
     {
         return Drawing.Color.FromArgb( color.Alpha, color.Red, color.Green, color.Blue );
+    }
+    
+
+    /* Flatland.Context interface */
+
+    public override Flatland.Context SetLineColor(Flatland.Color color)
+    {
+        return SetPen(color);
+    }
+
+    public override Flatland.Context SetFillColor(Color color)
+    {
+        return SetBrush(color);
+    }
+
+    public override Flatland.Turtle NewTurtle()
+    {
+        return new Turtle(this);
     }
 }
 

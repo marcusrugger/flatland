@@ -8,10 +8,16 @@ public abstract class Turtle : Flatland.Turtle
     Cartesian position;
     double angle;
 
-    public Turtle()
+    protected Turtle()
     {
         position = new Cartesian();
         angle    = 0;
+    }
+
+    protected Turtle(Turtle other)
+    {
+        this.position = other.position;
+        this.angle    = other.angle;
     }
 
     protected Turtle(Turtle other, Cartesian position)
@@ -25,6 +31,8 @@ public abstract class Turtle : Flatland.Turtle
         this.position = other.position;
         this.angle    = angle;
     }
+
+    public abstract Flatland.Turtle SetLineColor(Color color);
 
     public Flatland.Turtle MoveTo(Cartesian position)
     {

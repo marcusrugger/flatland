@@ -8,30 +8,37 @@ namespace Flatland.GdiPlus {
 
 public class Turtle : Flatland.Common.Turtle
 {
-    Drawing.Graphics graphics;
-    Drawing.Pen pen;
+    Context context;
 
     public Turtle(Context context)
     {
-        graphics = context.Graphics;
-        pen      = context.CurrentPen;
+        this.context = context;
+    }
+
+    public Turtle(Turtle other, Context newContext) : base()
+    {
+        this.context = newContext;
     }
 
     private Turtle(Turtle other, Cartesian position) : base(other, position)
     {
-        graphics = other.graphics;
-        pen = other.pen;
+        this.context = other.context;
     }
 
     private Turtle(Turtle other, double angle) : base(other, angle)
     {
-        graphics = other.graphics;
-        pen = other.pen;
+        this.context = other.context;
+    }
+
+    public override Flatland.Turtle SetLineColor(Color color)
+    {
+        var newContext = context.SetPen(color);
+        return new Turtle(this, newContext);
     }
 
     protected override void Draw(Cartesian p1, Cartesian p2)
     {
-        graphics.DrawLine(pen, ToPoint(p1), ToPoint(p2));
+        context.Graphics.DrawLine(context.CurrentPen, ToPoint(p1), ToPoint(p2));
     }
 
     protected override Flatland.Turtle CloneWith(Cartesian newPosition)

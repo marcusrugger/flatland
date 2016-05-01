@@ -5,6 +5,8 @@ namespace Flatland {
 
 public interface Turtle
 {
+    Turtle SetLineColor(Color color);
+
     Turtle MoveTo(Cartesian position);
     Turtle Move(double distance);
     Turtle TurnTo(double angle);
