@@ -7,6 +7,12 @@ public class Cartesian
 {
     public double x;
     public double y;
+    
+    public Cartesian()
+    {
+        x = 0;
+        y = 0;
+    }
 
     public Cartesian(double x, double y)
     {
@@ -30,14 +36,9 @@ public class Cartesian
         return new Cartesian(ls.x - rs.x, ls.y - rs.y);
     }
 
-    public Cartesian Add(Cartesian other)
+    public Cartesian Offset(Cartesian other)
     {
         return new Cartesian(x + other.x, y + other.y);
-    }
-
-    public Cartesian Subtract(Cartesian other)
-    {
-        return new Cartesian(x - other.x, y - other.y);
     }
 
     public Cartesian Scale(double magnitude)

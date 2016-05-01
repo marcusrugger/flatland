@@ -31,11 +31,11 @@ class CartesianTest
     }
 
     [Test]
-    public void Add()
+    public void Offset()
     {
         Cartesian p1 = new Cartesian(123.4, 234.5);
         Cartesian p2 = new Cartesian(345.6, 456.7);
-        Cartesian p3 = p2.Add(p1);
+        Cartesian p3 = p2.Offset(p1);
 
         Assert.That(p1.x, Is.EqualTo(123.4));
         Assert.That(p1.y, Is.EqualTo(234.5));
@@ -44,22 +44,6 @@ class CartesianTest
 
         Assert.That(p3.x, Is.EqualTo(123.4 + 345.6));
         Assert.That(p3.y, Is.EqualTo(234.5 + 456.7));
-    }
-
-    [Test]
-    public void Subtract()
-    {
-        Cartesian p1 = new Cartesian(123.4, 234.5);
-        Cartesian p2 = new Cartesian(345.6, 456.7);
-        Cartesian p3 = p2.Subtract(p1);
-
-        Assert.That(p1.x, Is.EqualTo(123.4));
-        Assert.That(p1.y, Is.EqualTo(234.5));
-        Assert.That(p2.x, Is.EqualTo(345.6));
-        Assert.That(p2.y, Is.EqualTo(456.7));
-
-        Assert.That(p3.x, Is.EqualTo(345.6 - 123.4));
-        Assert.That(p3.y, Is.EqualTo(456.7 - 234.5));
     }
 
     [Test]
