@@ -43,5 +43,6 @@ tests.dll:	polar.test.cs				\
 			cartesian.test.cs			\
 			algorithms.test.cs			\
 			point.test.cs				\
+			color.test.cs				\
 			$(SOURCE)
 	mcs -out:$@ -target:library $(PACKAGES) -r:$(NUNIT_FRAMEWORK) $^
