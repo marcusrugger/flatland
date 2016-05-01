@@ -5,7 +5,8 @@ SOURCE = 	algorithms.cs					\
 			point.cs						\
 			cartesian.cs					\
 			polar.cs						\
-			drawline.cs
+			drawline.cs						\
+			context.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1
@@ -44,5 +45,6 @@ tests.dll:	polar.test.cs				\
 			algorithms.test.cs			\
 			point.test.cs				\
 			color.test.cs				\
+			drawline.test.cs			\
 			$(SOURCE)
 	mcs -out:$@ -target:library $(PACKAGES) -r:$(NUNIT_FRAMEWORK) $^
