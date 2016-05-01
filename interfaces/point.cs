@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-class Point
+public class Point
 {
     readonly int x;
     readonly int y;

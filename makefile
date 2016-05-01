@@ -1,39 +1,21 @@
 
-BIN_DIR		= bin
-TIDES		= src
-WINFORMS	= winforms
-GTKSHARP	= gtk
+BIN_FOLDER			= bin
+INTERFACES_FOLDER	= interfaces
+COMMON_FOLDER		= common
+GDIPLUS_FOLDER		= gdiplus
 
 
-all:	$(BIN_DIR)
-	$(MAKE) -C $(TIDES)
-	$(MAKE) -C $(WINFORMS)
-	$(MAKE) -C $(GTKSHARP)
+all:	$(BIN_FOLDER)
+	$(MAKE) -C $(INTERFACES_FOLDER)
+	$(MAKE) -C $(COMMON_FOLDER)
+	$(MAKE) -C $(GDIPLUS_FOLDER)
 
 
 clean:
-	$(MAKE) -C $(TIDES) clean
-	$(MAKE) -C $(WINFORMS) clean
-	$(MAKE) -C $(GTKSHARP) clean
+	$(MAKE) -C $(INTERFACES_FOLDER) clean
+	$(MAKE) -C $(COMMON_FOLDER) clean
+	$(MAKE) -C $(GDIPLUS_FOLDER) clean
 
 
-makewinforms:
-	$(MAKE) -C $(TIDES)
-	$(MAKE) -C $(WINFORMS)
-
-
-runwinforms:
-	$(MAKE) -C $(WINFORMS) run
-
-
-makegtk:
-	$(MAKE) -C $(TIDES)
-	$(MAKE) -C $(GTKSHARP)
-
-
-rungtk:
-	$(MAKE) -C $(GTKSHARP) run
-
-
-$(BIN_DIR):
-	mkdir $(BIN_DIR)
+$(BIN_FOLDER):
+	mkdir $(BIN_FOLDER)

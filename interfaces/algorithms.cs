@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-class Algorithms
+public class Algorithms
 {
     public static double ToRadians(double degrees)
     {

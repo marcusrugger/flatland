@@ -5,8 +5,6 @@ SOURCE = 	algorithms.cs					\
 			point.cs						\
 			cartesian.cs					\
 			polar.cs						\
-			drawline.cs						\
-			context.cs						\
 			turtle.cs
 
 
@@ -17,7 +15,7 @@ NUNIT_CONSOLE		=	$(NUNIT_PATH)/bin/nunit3-console.exe
 
 ROOT_DIR	= ..
 BIN_DIR		= $(ROOT_DIR)/bin
-DLL_NAME	= flatland.dll
+DLL_NAME	= flatland.interfaces.dll
 TARGET		= $(BIN_DIR)/$(DLL_NAME)
 
 PACKAGES	= -pkg:dotnet
@@ -46,6 +44,5 @@ tests.dll:	polar.test.cs				\
 			algorithms.test.cs			\
 			point.test.cs				\
 			color.test.cs				\
-			drawline.test.cs			\
 			$(SOURCE)
 	mcs -out:$@ -target:library $(PACKAGES) -r:$(NUNIT_FRAMEWORK) $^

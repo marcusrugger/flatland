@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-interface Color
+public interface Color
 {
     byte Red   { get; }
     byte Green { get; }
@@ -12,7 +12,7 @@ interface Color
 }
 
 
-class ColorGrayscale : Color
+public class ColorGrayscale : Color
 {
     byte value;
 
@@ -36,7 +36,7 @@ class ColorGrayscale : Color
 }
 
 
-class ColorRGB : Color
+public class ColorRGB : Color
 {
     byte red;
     byte green;
@@ -70,7 +70,7 @@ class ColorRGB : Color
 }
 
 
-class ColorRGBA : Color
+public class ColorRGBA : Color
 {
     byte red;
     byte green;
@@ -92,7 +92,7 @@ class ColorRGBA : Color
 }
 
 
-class Colors
+public class Colors
 {
     public static Color Black   = new ColorGrayscale(   0 );
     public static Color DkGray  = new ColorGrayscale(  64 );
