@@ -62,6 +62,7 @@ public class Context : Flatland.Context
 
     public void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle)
     {
+        context.NewSubPath();
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
         context.Arc(x, y, radius, startAngle, startAngle + sweepAngle);
