@@ -30,6 +30,11 @@ public class Point
         return new Point(this.x + x, this.y + y);
     }
 
+    public Cartesian ToCartesian()
+    {
+        return new Cartesian(this);
+    }
+
     public int X { get { return x; } }
     public int Y { get { return y; } }
 }

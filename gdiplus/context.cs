@@ -12,7 +12,7 @@ public class Context : Flatland.Common.Context
     Drawing.Pen         currentPen;
     Drawing.Brush       currentBrush;
     
-    public Context Create(Drawing.Graphics graphics)
+    public static Context Create(Drawing.Graphics graphics)
     {
         return new Context(graphics);
     }

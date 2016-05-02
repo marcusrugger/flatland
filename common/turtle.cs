@@ -34,6 +34,21 @@ public abstract class Turtle : Flatland.Turtle
 
     public abstract Flatland.Turtle SetLineColor(Color color);
 
+    public Flatland.Turtle MoveTo(int x, int y)
+    {
+        return MoveTo(new Cartesian(x, y));
+    }
+
+    public Flatland.Turtle MoveTo(double x, double y)
+    {
+        return MoveTo(new Cartesian(x, y));
+    }
+
+    public Flatland.Turtle MoveTo(Point position)
+    {
+        return MoveTo(position.ToCartesian());
+    }
+
     public Flatland.Turtle MoveTo(Cartesian position)
     {
         return CloneWith(position);

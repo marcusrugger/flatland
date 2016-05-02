@@ -25,6 +25,12 @@ public class Cartesian
         x = pc.r * Math.Cos(pc.a);
         y = pc.r * Math.Sin(pc.a);
     }
+    
+    public Cartesian(Point p)
+    {
+        x = p.X;
+        y = p.Y;
+    }
 
     public static Cartesian operator +(Cartesian ls, Cartesian rs)
     {
