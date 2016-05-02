@@ -1,36 +1,32 @@
+using Cairo;
+using Gtk;
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 using Flatland;
 
 
-class GdiPlusWindow : Form
+class GtkSharpWindow : Window
 {
-    Func<Graphics, Canvas> fnCreateCanvas;
+    Func<Cairo.Context, Flatland.Canvas> fnCreateCanvas;
 
-    private const int DISPLAY_WIDTH        = 1000;
-    private const int DISPLAY_HEIGHT       = 1000;
-
-    public GdiPlusWindow(Func<Graphics, Canvas> fnCreateCanvas)
+    public GtkSharpWindow(Func<Cairo.Context, Flatland.Canvas> fnCreateCanvas) : base("GtkSharp Test App")
     {
         this.fnCreateCanvas = fnCreateCanvas;
-        SetupForm();
+
+        SetDefaultSize(1000, 1000);
+
+        DeleteEvent += (obj, args) => Application.Quit();
     }
 
-    private void SetupForm()
+    protected override bool OnDrawn(Cairo.Context context)
     {
-        this.Text = "GdiPlus Test App";
-        this.Size = new Size(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-    }
-
-    protected override void OnPaint(PaintEventArgs e)
-    {
-        base.OnPaint(e);
-        var canvas = fnCreateCanvas(e.Graphics).SetLineColor(Colors.Blue);
+        bool result = base.OnDrawn(context);
+        var canvas = fnCreateCanvas(context).SetLineColor(Colors.Blue);
 
         // Test1(canvas);
         Test2(canvas.Turtle().MoveTo(500, 500), 10);
         // TestWireframe(canvas);
+
+        return result;
     }
 
     private void Test1(Canvas canvas)
@@ -70,4 +66,5 @@ class GdiPlusWindow : Form
         wireframe.Line(100, 100, 200, 100);
         wireframe.SetLineColor(Colors.Red).Circle(500, 500, 100);
     }
+
 }

@@ -1,7 +1,7 @@
 using Cairo;
 using System;
 
-namespace Flatland.GdiPlus {
+namespace Flatland.GtkSharp {
 
 
 public class Context : Flatland.Context
