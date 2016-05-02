@@ -38,21 +38,6 @@ public class Context : Flatland.Context
         this.currentBrush   = newBrush;
     }
 
-    public Drawing.Graphics Graphics
-    {
-        get { return graphics; }
-    }
-
-    public Drawing.Pen CurrentPen
-    {
-        get { return currentPen; }
-    }
-
-    public Drawing.Brush CurrentBrush
-    {
-        get { return currentBrush; }
-    }
-
     private Drawing.Brush CreateGdiBrush(Flatland.Color color)
     {
         return new Drawing.SolidBrush( ToGdiColor(color) );
@@ -81,23 +66,23 @@ public class Context : Flatland.Context
         return new Context( this, CreateGdiBrush(color) );
     }
 
-    public void DrawLine(Point p1, Point p2)
-    {
-        graphics.DrawLine(currentPen, p1.X, p1.Y, p2.X, p2.Y);
-    }
-
     public void DrawLine(Cartesian p1, Cartesian p2)
     {
-        DrawLine(p1.ToPoint(), p2.ToPoint());
+        var pt1 = p1.ToPoint();
+        var pt2 = p2.ToPoint();
+        graphics.DrawLine(currentPen, pt1.X, pt1.Y, pt2.X, pt2.Y);
     }
 
-    public void DrawCircle(Cartesian p, double r)
+    public void DrawArc(Cartesian point, double radius, double startAngle, double sweepAngle)
     {
-        Point center = p.ToPoint();
-        int radius   = (int) (r + 0.5);
+        Drawing.RectangleF rect = new Drawing.RectangleF((float) (point.X - radius),
+                                                         (float) (point.Y - radius),
+                                                         (float) (2*radius),
+                                                         (float) (2*radius));
 
-        Drawing.Rectangle rect = new Drawing.Rectangle(center.X - radius, center.Y - radius, 2*radius, 2*radius);
-        graphics.DrawEllipse(currentPen, rect);
+        float a = (float) Algorithms.ToDegrees(startAngle);
+        float b = (float) Algorithms.ToDegrees(sweepAngle);
+        graphics.DrawArc(currentPen, rect, a, b);
     }
 }
 
