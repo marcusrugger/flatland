@@ -36,6 +36,16 @@ class GdiPlusWindow : Form
         canvas.Turtle()
               .MoveTo(200, 200)
               .LineTo(300, 300);
+
+        canvas.Turtle()
+              .MoveTo(400, 400)
+              .LineTo(400, 600)
+              .SetLineColor(Colors.Cyan)
+              .LineTo(600, 600)
+              .SetLineColor(Colors.Magenta)
+              .LineTo(600, 400)
+              .SetLineColor(Colors.Green)
+              .LineTo(400, 400);
     }
 
 }

@@ -5,53 +5,53 @@ namespace Flatland.Common {
 
 public class Turtle : Flatland.Turtle
 {
-    Flatland.Canvas canvas;
+    Context context;
     Cartesian position;
     double angle;
 
-    public static Turtle Create(Flatland.Canvas canvas)
+    public static Turtle Create(Context context)
     {
-        return new Turtle(canvas);
+        return new Turtle(context);
     }
 
-    private Turtle(Flatland.Canvas canvas)
+    private Turtle(Context context)
     {
-        this.canvas   = canvas;
+        this.context   = context;
         this.position = new Cartesian();
         this.angle    = 0;
     }
 
     private Turtle(Turtle other)
     {
-        this.canvas   = other.canvas;
+        this.context   = other.context;
         this.position = other.position;
         this.angle    = other.angle;
     }
 
-    private Turtle(Turtle other, Flatland.Canvas canvas)
+    private Turtle(Turtle other, Context context)
     {
-        this.canvas   = canvas;
+        this.context   = context;
         this.position = other.position;
         this.angle    = other.angle;
     }
 
     private Turtle(Turtle other, Cartesian position)
     {
-        this.canvas   = other.canvas;
+        this.context   = other.context;
         this.position = position;
         this.angle    = other.angle;
     }
 
     private Turtle(Turtle other, double angle)
     {
-        this.canvas   = other.canvas;
+        this.context   = other.context;
         this.position = other.position;
         this.angle    = angle;
     }
 
     public Flatland.Turtle SetLineColor(Color color)
     {
-        return new Turtle( this, canvas.SetLineColor(color) );
+        return new Turtle( this, context.SetLineColor(color) );
     }
 
     public Flatland.Turtle MoveTo(double x, double y)
@@ -87,7 +87,7 @@ public class Turtle : Flatland.Turtle
 
     public Flatland.Turtle LineTo(Cartesian position)
     {
-        Draw(this.position, position);
+        context.DrawLine(this.position, position);
         return MoveTo(position);
     }
 
@@ -95,11 +95,6 @@ public class Turtle : Flatland.Turtle
     {
         var newPosition = new Polar(angle, distance).ToCartesian().Offset(position);
         return LineTo(newPosition);
-    }
-
-    protected void Draw(Cartesian p1, Cartesian p2)
-    {
-        canvas.Context.DrawLine(p1, p2);
     }
 
 }
