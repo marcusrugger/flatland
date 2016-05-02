@@ -28,6 +28,12 @@ class GdiPlusWindow : Form
         base.OnPaint(e);
         var canvas = fnCreateCanvas(e.Graphics).SetLineColor(Colors.Blue);
 
+        // Test1(canvas);
+        Test2(canvas.Turtle().MoveTo(500, 500), 10);
+    }
+
+    private void Test1(Canvas canvas)
+    {
         canvas.Turtle()
               .SetLineColor(Colors.Red)
               .MoveTo(100, 100)
@@ -48,4 +54,12 @@ class GdiPlusWindow : Form
               .LineTo(400, 400);
     }
 
+    private void Test2(Turtle turtle, double distance)
+    {
+        double angle = Algorithms.ToRadians(91);
+
+        if (distance > 500) return;
+        var nextTurtle = turtle.Turn(angle).PenMove(distance).PenToggle();
+        Test2(nextTurtle, distance+1 );
+    }
 }

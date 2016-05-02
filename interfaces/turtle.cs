@@ -9,15 +9,21 @@ public interface Turtle
 
     Turtle MoveTo(double x, double y);
     Turtle MoveTo(Cartesian position);
+    Turtle Move(double distance);
 
     Turtle LineTo(double x, double y);
     Turtle LineTo(Cartesian position);
-
-    Turtle Move(double distance);
     Turtle Line(double distance);
 
     Turtle TurnTo(double angle);
     Turtle Turn(double angle);
+
+    Turtle PenDown(bool flag = true);
+    Turtle PenUp(bool flag = true);
+    Turtle PenToggle();
+    Turtle PenMoveTo(double x, double y);
+    Turtle PenMoveTo(Cartesian position);
+    Turtle PenMove(double distance);
 }
 
 }
