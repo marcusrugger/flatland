@@ -51,20 +51,20 @@ public class Context : Flatland.Context
         return new Context(this, this.currentLineColor, ToCairoColor(color));
     }
 
-    public void DrawLine(Cartesian p1, Cartesian p2)
+    public void DrawLine(double ax, double ay, double bx, double by)
     {
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
-        context.MoveTo(p1.X, p1.Y);
-        context.LineTo(p2.X, p2.Y);
+        context.MoveTo(ax, ay);
+        context.LineTo(bx, by);
         context.Stroke();
     }
 
-    public void DrawArc(Cartesian point, double radius, double startAngle, double sweepAngle)
+    public void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle)
     {
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
-        context.Arc(point.X, point.Y, radius, startAngle, startAngle + sweepAngle);
+        context.Arc(x, y, radius, startAngle, startAngle + sweepAngle);
         context.Stroke();
     }
 }

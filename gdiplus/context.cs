@@ -66,19 +66,17 @@ public class Context : Flatland.Context
         return new Context( this, CreateGdiBrush(color) );
     }
 
-    public void DrawLine(Cartesian p1, Cartesian p2)
+    public void DrawLine(double ax, double ay, double bx, double by)
     {
-        var pt1 = p1.ToPoint();
-        var pt2 = p2.ToPoint();
-        graphics.DrawLine(currentPen, pt1.X, pt1.Y, pt2.X, pt2.Y);
+        graphics.DrawLine(currentPen, (int) ax, (int) ay, (int) bx, (int) by);
     }
 
-    public void DrawArc(Cartesian point, double radius, double startAngle, double sweepAngle)
+    public void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle)
     {
-        Drawing.RectangleF rect = new Drawing.RectangleF((float) (point.X - radius),
-                                                         (float) (point.Y - radius),
-                                                         (float) (2*radius),
-                                                         (float) (2*radius));
+        Drawing.RectangleF rect = new Drawing.RectangleF((float) (x - radius),
+                                                         (float) (y - radius),
+                                                         (float) (2 * radius),
+                                                         (float) (2 * radius));
 
         float a = (float) Algorithms.ToDegrees(startAngle);
         float b = (float) Algorithms.ToDegrees(sweepAngle);

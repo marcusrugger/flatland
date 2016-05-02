@@ -8,8 +8,8 @@ public interface Context
     Context SetLineColor(Color color);
     Context SetFillColor(Color color);
 
-    void DrawLine(Cartesian p1, Cartesian p2);
-    void DrawArc(Cartesian point, double radius, double startAngle, double sweepAngle);
+    void DrawLine(double ax, double ay, double bx, double by);
+    void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle);
 }
 
 }

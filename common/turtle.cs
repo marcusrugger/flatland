@@ -96,12 +96,13 @@ public class Turtle : Flatland.Turtle
 
     public Flatland.Turtle LineTo(double x, double y)
     {
-        return LineTo(new Cartesian(x, y));
+        context.DrawLine(this.position.X, this.position.Y, x, y);
+        return MoveTo(x, y);
     }
 
     public Flatland.Turtle LineTo(Cartesian position)
     {
-        context.DrawLine(this.position, position);
+        context.DrawLine(this.position.X, this.position.Y, position.X, position.Y);
         return MoveTo(position);
     }
 
