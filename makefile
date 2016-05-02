@@ -4,6 +4,7 @@ INTERFACES_FOLDER	= interfaces
 COMMON_FOLDER		= common
 GDIPLUS_FOLDER		= gdiplus
 GDIPLUSAPP_FOLDER	= gdiplusapp
+GTKSHARP_FOLDER		= gtksharp
 
 
 all:	$(BIN_FOLDER)
@@ -11,6 +12,7 @@ all:	$(BIN_FOLDER)
 	$(MAKE) -C $(COMMON_FOLDER)
 	$(MAKE) -C $(GDIPLUS_FOLDER)
 	$(MAKE) -C $(GDIPLUSAPP_FOLDER)
+	$(MAKE) -C $(GTKSHARP_FOLDER)
 
 
 clean:
@@ -18,6 +20,7 @@ clean:
 	$(MAKE) -C $(COMMON_FOLDER) clean
 	$(MAKE) -C $(GDIPLUS_FOLDER) clean
 	$(MAKE) -C $(GDIPLUSAPP_FOLDER) clean
+	$(MAKE) -C $(GTKSHARP_FOLDER) clean
 
 
 $(BIN_FOLDER):
