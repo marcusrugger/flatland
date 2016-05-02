@@ -54,24 +54,14 @@ public class Turtle : Flatland.Turtle
         return new Turtle( this, canvas.SetLineColor(color) );
     }
 
-    public Flatland.Turtle MoveTo(int x, int y)
-    {
-        return MoveTo(new Cartesian(x, y));
-    }
-
     public Flatland.Turtle MoveTo(double x, double y)
     {
         return MoveTo(new Cartesian(x, y));
     }
 
-    public Flatland.Turtle MoveTo(Point position)
-    {
-        return MoveTo(position.ToCartesian());
-    }
-
     public Flatland.Turtle MoveTo(Cartesian position)
     {
-        return CloneWith(position);
+        return new Turtle(this, position);
     }
 
     public Flatland.Turtle Move(double distance)
@@ -82,7 +72,7 @@ public class Turtle : Flatland.Turtle
 
     public Flatland.Turtle TurnTo(double angle)
     {
-        return CloneWith(angle);
+        return new Turtle(this, angle);
     }
 
     public Flatland.Turtle Turn(double angle)
@@ -90,19 +80,9 @@ public class Turtle : Flatland.Turtle
         return TurnTo(this.angle + angle);
     }
 
-    public Flatland.Turtle LineTo(int x, int y)
-    {
-        return LineTo(new Cartesian(x, y));
-    }
-
     public Flatland.Turtle LineTo(double x, double y)
     {
         return LineTo(new Cartesian(x, y));
-    }
-
-    public Flatland.Turtle LineTo(Point position)
-    {
-        return LineTo(position.ToCartesian());
     }
 
     public Flatland.Turtle LineTo(Cartesian position)
@@ -117,24 +97,9 @@ public class Turtle : Flatland.Turtle
         return LineTo(newPosition);
     }
 
-    protected void Draw(Point p1, Point p2)
-    {
-        canvas.Context.DrawLine(p1, p2);
-    }
-
     protected void Draw(Cartesian p1, Cartesian p2)
     {
-        Draw(p1.ToPoint(), p2.ToPoint());
-    }
-
-    protected Flatland.Turtle CloneWith(Cartesian newPosition)
-    {
-        return new Turtle(this, newPosition);
-    }
-
-    protected Flatland.Turtle CloneWith(double newAngle)
-    {
-        return new Turtle(this, newAngle);
+        canvas.Context.DrawLine(p1, p2);
     }
 
 }

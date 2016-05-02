@@ -28,12 +28,12 @@ class GdiPlusWindow : Form
         base.OnPaint(e);
         var canvas = fnCreateCanvas(e.Graphics).SetLineColor(Colors.Blue);
 
-        canvas.NewTurtle()
+        canvas.Turtle()
               .SetLineColor(Colors.Red)
               .MoveTo(100, 100)
               .LineTo(200, 200);
 
-        canvas.NewTurtle()
+        canvas.Turtle()
               .MoveTo(200, 200)
               .LineTo(300, 300);
     }

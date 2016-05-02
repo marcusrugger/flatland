@@ -16,14 +16,14 @@ public class Canvas : Flatland.Canvas
     {
         this.context = context;
     }
+    
+
+    /* Flatland.Canvas interface */
 
     public Context Context
     {
         get { return context; }
     }
-    
-
-    /* Flatland.Canvas interface */
 
     public Flatland.Canvas SetLineColor(Color color)
     {
@@ -35,9 +35,9 @@ public class Canvas : Flatland.Canvas
         return new Canvas( context.SetFillColor(color) );
     }
 
-    public Flatland.Turtle NewTurtle()
+    public Flatland.Turtle Turtle()
     {
-        return Turtle.Create(this);
+        return Common.Turtle.Create(this);
     }
 }
 

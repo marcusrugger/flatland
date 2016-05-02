@@ -11,7 +11,8 @@ public interface Canvas
 
     Canvas SetLineColor(Color color);
     Canvas SetFillColor(Color color);
-    Turtle NewTurtle();
+
+    Turtle Turtle();
 }
 
 }
