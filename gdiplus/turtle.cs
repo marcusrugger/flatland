@@ -8,37 +8,43 @@ namespace Flatland.GdiPlus {
 
 public class Turtle : Flatland.Common.Turtle
 {
-    Context context;
+    Canvas canvas;
 
-    public Turtle(Context context)
+    public Turtle(Canvas canvas) : base()
     {
-        this.context = context;
+        this.canvas = canvas;
     }
 
-    public Turtle(Turtle other, Context newContext) : base()
+    public Turtle(Turtle other, Canvas newCanvas) : base()
     {
-        this.context = newContext;
+        this.canvas = newCanvas;
     }
 
     private Turtle(Turtle other, Cartesian position) : base(other, position)
     {
-        this.context = other.context;
+        this.canvas = other.canvas;
     }
 
     private Turtle(Turtle other, double angle) : base(other, angle)
     {
-        this.context = other.context;
+        this.canvas = other.canvas;
     }
 
     public override Flatland.Turtle SetLineColor(Color color)
     {
-        var newContext = context.SetPen(color);
-        return new Turtle(this, newContext);
+        var newContext = canvas.Context.SetPen(color);
+        var newCanvas  = Canvas.Create(newContext);
+        return new Turtle(this, newCanvas);
+    }
+
+    protected void Draw(Point p1, Point p2)
+    {
+        canvas.Context.DrawLine(p1, p2);
     }
 
     protected override void Draw(Cartesian p1, Cartesian p2)
     {
-        context.Graphics.DrawLine(context.CurrentPen, ToPoint(p1), ToPoint(p2));
+        Draw(p1.ToPoint(), p2.ToPoint());
     }
 
     protected override Flatland.Turtle CloneWith(Cartesian newPosition)
@@ -51,12 +57,6 @@ public class Turtle : Flatland.Common.Turtle
         return new Turtle(this, newAngle);
     }
 
-    private Drawing.Point ToPoint(Cartesian realPt)
-    {
-        int x = (int) (realPt.X + 0.5);
-        int y = (int) (realPt.Y + 0.5);
-        return new Drawing.Point(x, y);
-    }
 }
 
 }

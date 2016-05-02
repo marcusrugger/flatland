@@ -57,6 +57,11 @@ public class Cartesian
         return new Cartesian(fn(x), fn(y));
     }
 
+    public Point ToPoint()
+    {
+        return new Point(this);
+    }
+
     public Polar ToPolar()
     {
         return new Polar(this);

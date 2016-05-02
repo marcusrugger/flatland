@@ -18,9 +18,10 @@ public interface Turtle
     Turtle LineTo(Cartesian position);
 
     Turtle Move(double distance);
+    Turtle Line(double distance);
+
     Turtle TurnTo(double angle);
     Turtle Turn(double angle);
-    Turtle Line(double distance);
 }
 
 }

@@ -91,9 +91,14 @@ public class Context : Flatland.Common.Context
         return SetBrush(color);
     }
 
-    public override Flatland.Turtle NewTurtle()
+    public override void DrawLine(Point p1, Point p2)
     {
-        return new Turtle(this);
+        graphics.DrawLine(currentPen, p1.X, p1.Y, p2.X, p2.Y);
+    }
+
+    public override void DrawLine(Cartesian p1, Cartesian p2)
+    {
+        DrawLine(p1.ToPoint(), p2.ToPoint());
     }
 }
 

@@ -7,7 +7,9 @@ public interface Context
 {
     Context SetLineColor(Color color);
     Context SetFillColor(Color color);
-    Turtle NewTurtle();
+
+    void DrawLine(Point p1, Point p2);
+    void DrawLine(Cartesian p1, Cartesian p2);
 }
 
 }

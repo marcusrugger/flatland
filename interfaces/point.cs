@@ -20,6 +20,12 @@ public class Point
         this.y = y;
     }
 
+    public Point(Cartesian p)
+    {
+        x = (int) (p.X + 0.5);
+        y = (int) (p.Y + 0.5);
+    }
+
     public Point Offset(Point p)
     {
         return new Point(x + p.x, y + p.y);
