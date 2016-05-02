@@ -13,6 +13,7 @@ public interface Canvas
     Canvas SetFillColor(Color color);
 
     Turtle Turtle();
+    Geometry Geometry();
 }
 
 }

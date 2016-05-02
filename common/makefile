@@ -1,6 +1,7 @@
 
 SOURCE = 	canvas.cs			\
-			turtle.cs
+			turtle.cs			\
+			geometry.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

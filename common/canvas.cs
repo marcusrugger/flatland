@@ -39,6 +39,11 @@ public class Canvas : Flatland.Canvas
     {
         return Common.Turtle.Create(context);
     }
+
+    public Flatland.Geometry Geometry()
+    {
+        return Common.Geometry.Create(context);
+    }
 }
 
 }
