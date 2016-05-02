@@ -68,5 +68,6 @@ class GdiPlusWindow : Form
     {
         var geometry = canvas.Geometry().SetLineColor(Colors.Green);
         geometry.Line(100, 100, 200, 100);
+        geometry.SetLineColor(Colors.Red).Circle(500, 500, 100);
     }
 }

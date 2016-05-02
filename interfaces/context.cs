@@ -10,6 +10,8 @@ public interface Context
 
     void DrawLine(Point p1, Point p2);
     void DrawLine(Cartesian p1, Cartesian p2);
+
+    void DrawCircle(Cartesian p, double r);
 }
 
 }

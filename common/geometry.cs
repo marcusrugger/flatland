@@ -33,6 +33,18 @@ public class Geometry : Flatland.Geometry
         context.DrawLine(p1, p2);
         return this;
     }
+
+    public Flatland.Geometry Circle(double x, double y, double r)
+    {
+        Circle(new Cartesian(x, y), r);
+        return this;
+    }
+
+    public Flatland.Geometry Circle(Cartesian p, double r)
+    {
+        context.DrawCircle(p, r);
+        return this;
+    }
 }
 
 }

@@ -90,6 +90,15 @@ public class Context : Flatland.Context
     {
         DrawLine(p1.ToPoint(), p2.ToPoint());
     }
+
+    public void DrawCircle(Cartesian p, double r)
+    {
+        Point center = p.ToPoint();
+        int radius   = (int) (r + 0.5);
+
+        Drawing.Rectangle rect = new Drawing.Rectangle(center.X - radius, center.Y - radius, 2*radius, 2*radius);
+        graphics.DrawEllipse(currentPen, rect);
+    }
 }
 
 }
