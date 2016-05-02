@@ -14,7 +14,7 @@ public interface Color
 
 public class ColorGrayscale : Color
 {
-    byte value;
+    readonly byte value;
 
     public ColorGrayscale()
     {}
@@ -38,9 +38,9 @@ public class ColorGrayscale : Color
 
 public class ColorRGB : Color
 {
-    byte red;
-    byte green;
-    byte blue;
+    readonly byte red;
+    readonly byte green;
+    readonly byte blue;
     
     public ColorRGB()
     {
@@ -72,10 +72,10 @@ public class ColorRGB : Color
 
 public class ColorRGBA : Color
 {
-    byte red;
-    byte green;
-    byte blue;
-    byte alpha;
+    readonly byte red;
+    readonly byte green;
+    readonly byte blue;
+    readonly byte alpha;
 
     public ColorRGBA(byte red, byte green, byte blue, byte alpha)
     {
@@ -94,18 +94,18 @@ public class ColorRGBA : Color
 
 public class Colors
 {
-    public static Color Black   = new ColorGrayscale(   0 );
-    public static Color DkGray  = new ColorGrayscale(  64 );
-    public static Color Gray    = new ColorGrayscale( 128 );
-    public static Color LtGray  = new ColorGrayscale( 192 );
-    public static Color White   = new ColorGrayscale( 255 );
+    public static readonly Color Black   = new ColorGrayscale(   0 );
+    public static readonly Color DkGray  = new ColorGrayscale(  64 );
+    public static readonly Color Gray    = new ColorGrayscale( 128 );
+    public static readonly Color LtGray  = new ColorGrayscale( 192 );
+    public static readonly Color White   = new ColorGrayscale( 255 );
 
-    public static Color Red     = new ColorRGB( 255,   0,   0 );
-    public static Color Green   = new ColorRGB(   0, 255,   0 );
-    public static Color Blue    = new ColorRGB(   0,   0, 255 );
-    public static Color Cyan    = new ColorRGB(   0, 255, 255 );
-    public static Color Magenta = new ColorRGB( 255,   0, 255 );
-    public static Color Yellow  = new ColorRGB( 255, 255,   0 );
+    public static readonly Color Red     = new ColorRGB( 255,   0,   0 );
+    public static readonly Color Green   = new ColorRGB(   0, 255,   0 );
+    public static readonly Color Blue    = new ColorRGB(   0,   0, 255 );
+    public static readonly Color Cyan    = new ColorRGB(   0, 255, 255 );
+    public static readonly Color Magenta = new ColorRGB( 255,   0, 255 );
+    public static readonly Color Yellow  = new ColorRGB( 255, 255,   0 );
 }
 
 }

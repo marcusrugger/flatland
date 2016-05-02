@@ -5,9 +5,9 @@ namespace Flatland.Common {
 
 public class Turtle : Flatland.Turtle
 {
-    Context context;
-    Cartesian position;
-    double angle;
+    readonly Context context;
+    readonly Cartesian position;
+    readonly double angle;
 
     public static Turtle Create(Context context)
     {

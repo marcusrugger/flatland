@@ -8,9 +8,9 @@ namespace Flatland.GdiPlus {
 
 public class Context : Flatland.Context
 {
-    Drawing.Graphics    graphics;
-    Drawing.Pen         currentPen;
-    Drawing.Brush       currentBrush;
+    readonly Drawing.Graphics    graphics;
+    readonly Drawing.Pen         currentPen;
+    readonly Drawing.Brush       currentBrush;
     
     public static Context Create(Drawing.Graphics graphics)
     {

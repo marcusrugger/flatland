@@ -5,7 +5,7 @@ namespace Flatland.Common {
 
 public class Canvas : Flatland.Canvas
 {
-    Context context;
+    readonly Context context;
     
     public static Canvas Create(Context context)
     {
