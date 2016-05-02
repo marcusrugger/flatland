@@ -28,9 +28,9 @@ class GdiPlusWindow : Form
         base.OnPaint(e);
         var canvas = fnCreateCanvas(e.Graphics).SetLineColor(Colors.Blue);
 
-        // Test1(canvas);
+        Test1(canvas);
         Test2(canvas.Turtle().MoveTo(500, 500), 10);
-        // TestWireframe(canvas);
+        TestWireframe(canvas);
     }
 
     private void Test1(Canvas canvas)

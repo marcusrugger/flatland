@@ -9,7 +9,7 @@ NUNIT_CONSOLE		=	$(NUNIT_PATH)/bin/nunit3-console.exe
 
 ROOT_DIR	= ..
 BIN_DIR		= $(ROOT_DIR)/bin
-DLL_NAME	= flatland.gtksharp.dll
+DLL_NAME	= flatland.cairo.dll
 TARGET		= $(BIN_DIR)/$(DLL_NAME)
 
 INTERFACES  = $(BIN_DIR)/flatland.interfaces.dll

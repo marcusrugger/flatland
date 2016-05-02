@@ -1,7 +1,7 @@
 using Cairo;
 using System;
 
-namespace Flatland.GtkSharp {
+namespace Flatland.CairoGraphics {
 
 
 public class Context : Flatland.Context

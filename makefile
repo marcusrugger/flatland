@@ -4,8 +4,8 @@ INTERFACES_FOLDER	= interfaces
 COMMON_FOLDER		= common
 GDIPLUS_FOLDER		= gdiplus
 GDIPLUSAPP_FOLDER	= gdiplusapp
-GTKSHARP_FOLDER		= gtksharp
-GTKSHARPAPP_FOLDER	= gtksharpapp
+CAIRO_FOLDER		= cairo
+CAIROAPP_FOLDER		= cairoapp
 
 
 all:	$(BIN_FOLDER)
@@ -13,8 +13,8 @@ all:	$(BIN_FOLDER)
 	$(MAKE) -C $(COMMON_FOLDER)
 	$(MAKE) -C $(GDIPLUS_FOLDER)
 	$(MAKE) -C $(GDIPLUSAPP_FOLDER)
-	$(MAKE) -C $(GTKSHARP_FOLDER)
-	$(MAKE) -C $(GTKSHARPAPP_FOLDER)
+	$(MAKE) -C $(CAIRO_FOLDER)
+	$(MAKE) -C $(CAIROAPP_FOLDER)
 
 
 clean:
@@ -22,8 +22,8 @@ clean:
 	$(MAKE) -C $(COMMON_FOLDER) clean
 	$(MAKE) -C $(GDIPLUS_FOLDER) clean
 	$(MAKE) -C $(GDIPLUSAPP_FOLDER) clean
-	$(MAKE) -C $(GTKSHARP_FOLDER) clean
-	$(MAKE) -C $(GTKSHARPAPP_FOLDER) clean
+	$(MAKE) -C $(CAIRO_FOLDER) clean
+	$(MAKE) -C $(CAIROAPP_FOLDER) clean
 
 
 $(BIN_FOLDER):
@@ -34,5 +34,5 @@ rungdi:
 	mono $(BIN_FOLDER)/gdiplusapp.exe
 
 
-rungtk:
-	mono $(BIN_FOLDER)/gtksharpapp.exe
+runcairo:
+	mono $(BIN_FOLDER)/cairoapp.exe

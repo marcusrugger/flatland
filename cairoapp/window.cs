@@ -4,11 +4,11 @@ using System;
 using Flatland;
 
 
-class GtkSharpWindow : Window
+class CairoWindow : Window
 {
     Func<Cairo.Context, Flatland.Canvas> fnCreateCanvas;
 
-    public GtkSharpWindow(Func<Cairo.Context, Flatland.Canvas> fnCreateCanvas) : base("GtkSharp Test App")
+    public CairoWindow(Func<Cairo.Context, Flatland.Canvas> fnCreateCanvas) : base("GtkSharp Test App")
     {
         this.fnCreateCanvas = fnCreateCanvas;
 
@@ -22,9 +22,9 @@ class GtkSharpWindow : Window
         bool result = base.OnDrawn(context);
         var canvas = fnCreateCanvas(context).SetLineColor(Colors.Blue);
 
-        // Test1(canvas);
+        Test1(canvas);
         Test2(canvas.Turtle().MoveTo(500, 500), 10);
-        // TestWireframe(canvas);
+        TestWireframe(canvas);
 
         return result;
     }
