@@ -70,6 +70,21 @@ public abstract class Turtle : Flatland.Turtle
         return TurnTo(this.angle + angle);
     }
 
+    public Flatland.Turtle LineTo(int x, int y)
+    {
+        return LineTo(new Cartesian(x, y));
+    }
+
+    public Flatland.Turtle LineTo(double x, double y)
+    {
+        return LineTo(new Cartesian(x, y));
+    }
+
+    public Flatland.Turtle LineTo(Point position)
+    {
+        return LineTo(position.ToCartesian());
+    }
+
     public Flatland.Turtle LineTo(Cartesian position)
     {
         Draw(this.position, position);

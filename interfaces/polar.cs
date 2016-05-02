@@ -5,8 +5,8 @@ namespace Flatland {
 
 public class Polar
 {
-    public double a;
-    public double r;
+    readonly double a;
+    readonly double r;
 
     public Polar(double a, double r)
     {
@@ -17,12 +17,12 @@ public class Polar
     public Polar(Cartesian p)
     {
         this.a = SafeAtan(p);
-        this.r = Math.Sqrt(p.x * p.x + p.y * p.y);
+        this.r = Math.Sqrt(p.X * p.X + p.Y * p.Y);
     }
 
     private double SafeAtan(Cartesian p)
     {
-        if (Math.Abs(p.x) > 1e-9)
+        if (Math.Abs(p.X) > 1e-9)
             return AtanByQuadrant(p);
         else
             return AtanPointOnYAxis(p);
@@ -30,11 +30,11 @@ public class Polar
 
     private double AtanByQuadrant(Cartesian p)
     {
-        double result = Math.Atan(p.y / p.x);
+        double result = Math.Atan(p.Y / p.X);
 
-        if (p.x < 0.0)
+        if (p.X < 0.0)
             result += Math.PI;
-        else if (p.y < 0.0)
+        else if (p.Y < 0.0)
             result += 2*Math.PI;
 
         return result;
@@ -42,7 +42,7 @@ public class Polar
 
     private double AtanPointOnYAxis(Cartesian p)
     {
-        if (p.y >= 0.0)
+        if (p.Y >= 0.0)
             return Math.PI / 2.0;
         else
             return 3.0 * Math.PI / 2.0;
@@ -57,6 +57,9 @@ public class Polar
     {
         return new Polar(a, fn(r));
     }
+
+    public double A { get { return a; } }
+    public double R { get { return r; } }
 }
 
 }

@@ -53,8 +53,8 @@ public class Turtle : Flatland.Common.Turtle
 
     private Drawing.Point ToPoint(Cartesian realPt)
     {
-        int x = (int) (realPt.x + 0.5);
-        int y = (int) (realPt.y + 0.5);
+        int x = (int) (realPt.X + 0.5);
+        int y = (int) (realPt.Y + 0.5);
         return new Drawing.Point(x, y);
     }
 }

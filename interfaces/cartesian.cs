@@ -5,8 +5,8 @@ namespace Flatland {
 
 public class Cartesian
 {
-    public double x;
-    public double y;
+    readonly double x;
+    readonly double y;
     
     public Cartesian()
     {
@@ -22,8 +22,8 @@ public class Cartesian
 
     public Cartesian(Polar pc)
     {
-        x = pc.r * Math.Cos(pc.a);
-        y = pc.r * Math.Sin(pc.a);
+        x = pc.R * Math.Cos(pc.A);
+        y = pc.R * Math.Sin(pc.A);
     }
     
     public Cartesian(Point p)
@@ -61,6 +61,9 @@ public class Cartesian
     {
         return new Polar(this);
     }
+
+    public double X { get { return x; } }
+    public double Y { get { return y; } }
 }
 
 }

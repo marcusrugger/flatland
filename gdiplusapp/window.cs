@@ -26,10 +26,16 @@ class GdiPlusWindow : Form
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
-        var context = fnCreateContext(e.Graphics);
+        var context = fnCreateContext(e.Graphics).SetLineColor(Colors.Blue);
+
         context.NewTurtle()
-               .MoveTo(new Flatland.Cartesian(100.0, 100.0))
-               .LineTo(new Flatland.Cartesian(200.0, 200.0));
+               .SetLineColor(Colors.Red)
+               .MoveTo(100, 100)
+               .LineTo(200, 200);
+
+        context.NewTurtle()
+               .MoveTo(200, 200)
+               .LineTo(300, 300);
     }
 
 }

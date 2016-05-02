@@ -13,8 +13,8 @@ class CartesianTest
         double y = 234.5;
         Cartesian p = new Cartesian(x, y);
 
-        Assert.That(p.x, Is.EqualTo(x));
-        Assert.That(p.y, Is.EqualTo(y));
+        Assert.That(p.X, Is.EqualTo(x));
+        Assert.That(p.Y, Is.EqualTo(y));
     }
 
     [Test]
@@ -26,8 +26,8 @@ class CartesianTest
         Polar     p = new Polar(a, r);
         Cartesian c = new Cartesian(p);
 
-        Assert.That(c.x, Is.EqualTo(r * Math.Cos(a)));
-        Assert.That(c.y, Is.EqualTo(r * Math.Sin(a)));
+        Assert.That(c.X, Is.EqualTo(r * Math.Cos(a)));
+        Assert.That(c.Y, Is.EqualTo(r * Math.Sin(a)));
     }
 
     [Test]
@@ -37,13 +37,13 @@ class CartesianTest
         Cartesian p2 = new Cartesian(345.6, 456.7);
         Cartesian p3 = p2.Offset(p1);
 
-        Assert.That(p1.x, Is.EqualTo(123.4));
-        Assert.That(p1.y, Is.EqualTo(234.5));
-        Assert.That(p2.x, Is.EqualTo(345.6));
-        Assert.That(p2.y, Is.EqualTo(456.7));
+        Assert.That(p1.X, Is.EqualTo(123.4));
+        Assert.That(p1.Y, Is.EqualTo(234.5));
+        Assert.That(p2.X, Is.EqualTo(345.6));
+        Assert.That(p2.Y, Is.EqualTo(456.7));
 
-        Assert.That(p3.x, Is.EqualTo(123.4 + 345.6));
-        Assert.That(p3.y, Is.EqualTo(234.5 + 456.7));
+        Assert.That(p3.X, Is.EqualTo(123.4 + 345.6));
+        Assert.That(p3.Y, Is.EqualTo(234.5 + 456.7));
     }
 
     [Test]
@@ -52,8 +52,8 @@ class CartesianTest
         Cartesian p1 = new Cartesian(123.4, 234.5);
         Cartesian p2 = p1.Scale(2.0);
 
-        Assert.That(Math.Abs(p2.x - 246.8), Is.LessThan(1e-9));
-        Assert.That(Math.Abs(p2.y - 469.0), Is.LessThan(1e-9));
+        Assert.That(Math.Abs(p2.X - 246.8), Is.LessThan(1e-9));
+        Assert.That(Math.Abs(p2.Y - 469.0), Is.LessThan(1e-9));
     }
 
     [Test]
@@ -62,8 +62,8 @@ class CartesianTest
         Cartesian p1 = new Cartesian(123.4, 234.5);
         Cartesian p2 = p1.Transform(n => 2*n);
 
-        Assert.That(Math.Abs(p2.x - 246.8), Is.LessThan(1e-9));
-        Assert.That(Math.Abs(p2.y - 469.0), Is.LessThan(1e-9));
+        Assert.That(Math.Abs(p2.X - 246.8), Is.LessThan(1e-9));
+        Assert.That(Math.Abs(p2.Y - 469.0), Is.LessThan(1e-9));
     }
 
     [Test]
@@ -73,7 +73,7 @@ class CartesianTest
         Polar     p = c.ToPolar();
 
         Assert.That(p, Is.InstanceOf(typeof(Polar)));
-        Assert.That(Math.Abs(p.a -   1.0863887), Is.LessThan(1e-6));        
-        Assert.That(Math.Abs(p.r - 264.9864336), Is.LessThan(1e-6));
+        Assert.That(Math.Abs(p.A -   1.0863887), Is.LessThan(1e-6));        
+        Assert.That(Math.Abs(p.R - 264.9864336), Is.LessThan(1e-6));
     }
 }
