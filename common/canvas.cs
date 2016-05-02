@@ -40,9 +40,9 @@ public class Canvas : Flatland.Canvas
         return Common.Turtle.Create(context);
     }
 
-    public Flatland.Geometry Geometry()
+    public Flatland.Wireframe Wireframe()
     {
-        return Common.Geometry.Create(context);
+        return Common.Wireframe.Create(context);
     }
 }
 

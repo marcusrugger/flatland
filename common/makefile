@@ -1,7 +1,7 @@
 
 SOURCE = 	canvas.cs			\
 			turtle.cs			\
-			geometry.cs
+			wireframe.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

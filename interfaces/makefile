@@ -8,7 +8,7 @@ SOURCE = 	algorithms.cs					\
 			turtle.cs						\
 			context.cs						\
 			canvas.cs						\
-			geometry.cs
+			wireframe.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

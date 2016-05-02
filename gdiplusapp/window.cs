@@ -30,7 +30,7 @@ class GdiPlusWindow : Form
 
         // Test1(canvas);
         // Test2(canvas.Turtle().MoveTo(500, 500), 10);
-        TestGeometry(canvas);
+        TestWireframe(canvas);
     }
 
     private void Test1(Canvas canvas)
@@ -64,10 +64,10 @@ class GdiPlusWindow : Form
         Test2(nextTurtle, distance+1 );
     }
 
-    private void TestGeometry(Canvas canvas)
+    private void TestWireframe(Canvas canvas)
     {
-        var geometry = canvas.Geometry().SetLineColor(Colors.Green);
-        geometry.Line(100, 100, 200, 100);
-        geometry.SetLineColor(Colors.Red).Circle(500, 500, 100);
+        var wireframe = canvas.Wireframe().SetLineColor(Colors.Green);
+        wireframe.Line(100, 100, 200, 100);
+        wireframe.SetLineColor(Colors.Red).Circle(500, 500, 100);
     }
 }
