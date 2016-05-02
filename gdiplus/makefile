@@ -1,7 +1,5 @@
 
-SOURCE = 	context.cs		\
-			canvas.cs		\
-			turtle.cs
+SOURCE = 	context.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

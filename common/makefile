@@ -1,5 +1,5 @@
 
-SOURCE = 	context.cs			\
+SOURCE = 	canvas.cs			\
 			turtle.cs
 
 

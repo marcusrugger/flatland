@@ -3,36 +3,56 @@ using System;
 namespace Flatland.Common {
 
 
-public abstract class Turtle : Flatland.Turtle
+public class Turtle : Flatland.Turtle
 {
+    Flatland.Canvas canvas;
     Cartesian position;
     double angle;
 
-    protected Turtle()
+    public static Turtle Create(Flatland.Canvas canvas)
     {
-        position = new Cartesian();
-        angle    = 0;
+        return new Turtle(canvas);
     }
 
-    protected Turtle(Turtle other)
+    private Turtle(Flatland.Canvas canvas)
     {
+        this.canvas   = canvas;
+        this.position = new Cartesian();
+        this.angle    = 0;
+    }
+
+    private Turtle(Turtle other)
+    {
+        this.canvas   = other.canvas;
         this.position = other.position;
         this.angle    = other.angle;
     }
 
-    protected Turtle(Turtle other, Cartesian position)
+    private Turtle(Turtle other, Flatland.Canvas canvas)
     {
+        this.canvas   = canvas;
+        this.position = other.position;
+        this.angle    = other.angle;
+    }
+
+    private Turtle(Turtle other, Cartesian position)
+    {
+        this.canvas   = other.canvas;
         this.position = position;
         this.angle    = other.angle;
     }
 
-    protected Turtle(Turtle other, double angle)
+    private Turtle(Turtle other, double angle)
     {
+        this.canvas   = other.canvas;
         this.position = other.position;
         this.angle    = angle;
     }
 
-    public abstract Flatland.Turtle SetLineColor(Color color);
+    public Flatland.Turtle SetLineColor(Color color)
+    {
+        return new Turtle( this, canvas.SetLineColor(color) );
+    }
 
     public Flatland.Turtle MoveTo(int x, int y)
     {
@@ -97,9 +117,25 @@ public abstract class Turtle : Flatland.Turtle
         return LineTo(newPosition);
     }
 
-    protected abstract void Draw(Cartesian p1, Cartesian p2);
-    protected abstract Flatland.Turtle CloneWith(Cartesian newPosition);
-    protected abstract Flatland.Turtle CloneWith(double newAngle);
+    protected void Draw(Point p1, Point p2)
+    {
+        canvas.Context.DrawLine(p1, p2);
+    }
+
+    protected void Draw(Cartesian p1, Cartesian p2)
+    {
+        Draw(p1.ToPoint(), p2.ToPoint());
+    }
+
+    protected Flatland.Turtle CloneWith(Cartesian newPosition)
+    {
+        return new Turtle(this, newPosition);
+    }
+
+    protected Flatland.Turtle CloneWith(double newAngle)
+    {
+        return new Turtle(this, newAngle);
+    }
 
 }
 
