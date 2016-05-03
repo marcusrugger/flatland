@@ -47,6 +47,11 @@ public class Cartesian
         return new Cartesian(x + other.x, y + other.y);
     }
 
+    public Cartesian Subtract(Cartesian other)
+    {
+        return new Cartesian(x - other.x, y - other.y);
+    }
+
     public Cartesian Scale(double magnitude)
     {
         return new Cartesian(magnitude * x, magnitude * y);
