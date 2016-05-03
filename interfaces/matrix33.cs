@@ -33,6 +33,14 @@ class Matrix33
         matrix[2,2] = 1.0;
         return new Matrix33(matrix);
     }
+    
+    public static Matrix33 CreateMatrix(Cartesian scale, Cartesian delta, double angle)
+    {
+        var scaleM = Scale(scale);
+        var deltaM = Translate(delta);
+        var angleM = Rotate(angle);
+        return Multiply(deltaM, scaleM);
+    }
 
     public static Matrix33 Multiply(Matrix33 l, Matrix33 r)
     {
@@ -67,6 +75,13 @@ class Matrix33
     public double[,] Matrix
     {
         get { return matrix; }
+    }
+    
+    public Cartesian Transform(Cartesian p)
+    {
+        double x = matrix[0,0] * p.X + matrix[0,1] * p.Y + matrix[0,2];
+        double y = matrix[1,0] * p.X + matrix[1,1] * p.Y + matrix[1,2];
+        return new Cartesian(x, y);
     }
 
     public bool Equals(Matrix33 other)
