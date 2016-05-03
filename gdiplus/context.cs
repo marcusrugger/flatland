@@ -11,7 +11,7 @@ public class Context : Flatland.Context
     readonly Drawing.Graphics    graphics;
     readonly Drawing.Pen         currentPen;
     readonly Drawing.Brush       currentBrush;
-    
+
     public static Context Create(Drawing.Graphics graphics)
     {
         return new Context(graphics);
@@ -53,7 +53,7 @@ public class Context : Flatland.Context
         var colorb = color.ToColorB();
         return Drawing.Color.FromArgb( colorb.Alpha, colorb.Red, colorb.Green, colorb.Blue );
     }
-    
+
 
     /* Flatland.Context interface */
 

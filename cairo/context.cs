@@ -32,7 +32,7 @@ public class Context : Flatland.Context
     private Cairo.Color ToCairoColor(Flatland.Color color)
     {
         var colord = color.ToColorD();
-        return new Cairo.Color( colord.Red, colord.Green, colord.Blue );
+        return new Cairo.Color( colord.Red, colord.Green, colord.Blue, colord.Alpha );
     }
 
 
