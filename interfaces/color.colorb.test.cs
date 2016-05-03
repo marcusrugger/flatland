@@ -4,7 +4,7 @@ using Flatland;
 
 
 [TestFixture]
-class ColorTest
+class ColorBTest
 {
     [Test]
     public void ColorB_Grayscale()

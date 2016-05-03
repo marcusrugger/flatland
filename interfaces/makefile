@@ -2,6 +2,9 @@
 SOURCE = 	algorithms.cs					\
 			constants.cs					\
 			color.cs						\
+			color.colorb.cs					\
+			color.colorf.cs					\
+			color.colord.cs					\
 			point.cs						\
 			cartesian.cs					\
 			polar.cs						\
@@ -46,6 +49,8 @@ tests.dll:	polar.test.cs				\
 			cartesian.test.cs			\
 			algorithms.test.cs			\
 			point.test.cs				\
-			color.test.cs				\
+			color.colorb.test.cs		\
+			color.colorf.test.cs		\
+			color.colord.test.cs		\
 			$(SOURCE)
 	mcs -out:$@ -target:library $(PACKAGES) -r:$(NUNIT_FRAMEWORK) $^
