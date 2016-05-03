@@ -10,29 +10,27 @@ class Matrix33
     public static Matrix33 Scale(Cartesian scale)
     {
         double[,] matrix = new double[3,3];
-        matrix[0, 0] = scale.X;
-        matrix[1, 1] = scale.Y;
-        matrix[2, 2] = 1.0;
+        matrix[0,0] = scale.X;
+        matrix[1,1] = scale.Y;
+        matrix[2,2] = 1.0;
         return new Matrix33(matrix);
     }
 
     public static Matrix33 Translate(Cartesian delta)
     {
         double[,] matrix = new double[3,3];
-        matrix[0, 0] = 1.0;
-        matrix[1, 1] = 1.0;
-        matrix[2, 2] = 1.0;
-        matrix[0, 2] = delta.X;
-        matrix[1, 2] = delta.Y;
+        matrix[0,0] = matrix[1,1] = matrix[2,2] = 1.0;
+        matrix[0,2] = delta.X;
+        matrix[1,2] = delta.Y;
         return new Matrix33(matrix);
     }
 
     public static Matrix33 Rotate(double angle)
     {
         double[,] matrix = new double[3,3];
-        matrix[0, 0] =  Math.Cos(angle);    matrix[0, 1] = Math.Sin(angle);
-        matrix[1, 0] = -Math.Sin(angle);    matrix[1, 1] = Math.Cos(angle);
-        matrix[2, 2] = 1.0;
+        matrix[0,0] =  Math.Cos(angle);     matrix[0,1] = Math.Sin(angle);
+        matrix[1,0] = -Math.Sin(angle);     matrix[1,1] = Math.Cos(angle);
+        matrix[2,2] = 1.0;
         return new Matrix33(matrix);
     }
 
@@ -70,7 +68,7 @@ class Matrix33
     {
         get { return matrix; }
     }
-    
+
     public bool Equals(Matrix33 other)
     {
         bool result = true;

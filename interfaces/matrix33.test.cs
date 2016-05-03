@@ -17,6 +17,17 @@ class Matrix33Test
     }
 
     [Test]
+    public void Identity_NegativeCase()
+    {
+        double[,] id = new double[3,3];
+        id[0,0] = id[1,1] = id[2,2] = 1.0;
+        id[0,2] = 1.0;
+        Matrix33 a = new Matrix33(id);
+        Matrix33 b = new Matrix33();
+        Assert.That( !b.Equals(a) );
+    }
+
+    [Test]
     public void Scale()
     {
         var d = new Cartesian(1.23, 2.34);
