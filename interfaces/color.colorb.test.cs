@@ -62,6 +62,28 @@ class ColorBTest
     }
 
     [Test]
+    public void ColorB_From_ColorD_Black()
+    {
+        var color = new ColorB( new ColorD(0.0, 0.0, 0.0, 0.0) );
+
+        Assert.That(color.Red  , Is.EqualTo( 0 ));
+        Assert.That(color.Green, Is.EqualTo( 0 ));
+        Assert.That(color.Blue , Is.EqualTo( 0 ));
+        Assert.That(color.Alpha, Is.EqualTo( 0 ));
+    }
+
+    [Test]
+    public void ColorB_From_ColorD_White()
+    {
+        var color = new ColorB( new ColorD(1.0, 1.0, 1.0, 1.0) );
+
+        Assert.That(color.Red  , Is.EqualTo( 255 ));
+        Assert.That(color.Green, Is.EqualTo( 255 ));
+        Assert.That(color.Blue , Is.EqualTo( 255 ));
+        Assert.That(color.Alpha, Is.EqualTo( 255 ));
+    }
+
+    [Test]
     public void ColorB_ToColorB()
     {
         var color1 = new ColorB(12, 23, 34, 45);
