@@ -19,6 +19,7 @@ public class Context : Flatland.Context
     {
         this.context            = context;
         this.currentLineColor   = new Cairo.Color(0.0, 0.0, 0.0);
+        this.currentFillColor   = new Cairo.Color(1.0, 1.0, 1.0);
     }
 
     private Context(Context other, Cairo.Color colorLine, Cairo.Color colorFill)
