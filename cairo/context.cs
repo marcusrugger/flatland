@@ -31,12 +31,8 @@ public class Context : Flatland.Context
 
     private Cairo.Color ToCairoColor(Flatland.Color color)
     {
-        return new Cairo.Color( ToUnitDouble(color.Red), ToUnitDouble(color.Green), ToUnitDouble(color.Blue) );
-    }
-
-    private double ToUnitDouble(byte value)
-    {
-        return ((double) value) / 255.0;
+        var colord = color.ToColorD();
+        return new Cairo.Color( colord.Red, colord.Green, colord.Blue );
     }
 
 

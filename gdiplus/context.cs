@@ -50,7 +50,8 @@ public class Context : Flatland.Context
 
     private Drawing.Color ToGdiColor(Flatland.Color color)
     {
-        return Drawing.Color.FromArgb( color.Alpha, color.Red, color.Green, color.Blue );
+        var colorb = color.ToColorB();
+        return Drawing.Color.FromArgb( colorb.Alpha, colorb.Red, colorb.Green, colorb.Blue );
     }
     
 

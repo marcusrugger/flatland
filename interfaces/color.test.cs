@@ -6,6 +6,7 @@ using Flatland;
 [TestFixture]
 class ColorTest
 {
+/*
     [Test]
     public void ColorRGB()
     {
@@ -80,4 +81,5 @@ class ColorTest
         Assert.That(Colors.Blue.Blue  , Is.EqualTo( 255 ));
         Assert.That(Colors.Blue.Alpha , Is.EqualTo( 255 ));
     }
+*/
 }
