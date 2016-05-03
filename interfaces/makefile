@@ -11,7 +11,8 @@ SOURCE = 	algorithms.cs					\
 			turtle.cs						\
 			context.cs						\
 			canvas.cs						\
-			wireframe.cs
+			wireframe.cs					\
+			matrix33.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1
@@ -52,5 +53,6 @@ tests.dll:	polar.test.cs				\
 			color.colorb.test.cs		\
 			color.colorf.test.cs		\
 			color.colord.test.cs		\
+			matrix33.test.cs			\
 			$(SOURCE)
 	mcs -out:$@ -target:library $(PACKAGES) -r:$(NUNIT_FRAMEWORK) $^
