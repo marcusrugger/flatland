@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-public class Cartesian
+public class Cartesian : Coordinate
 {
     readonly double x;
     readonly double y;
@@ -52,9 +52,14 @@ public class Cartesian
         return new Cartesian(x - other.x, y - other.y);
     }
 
-    public Cartesian Scale(double magnitude)
+    public Cartesian Scale(double scale)
     {
-        return new Cartesian(magnitude * x, magnitude * y);
+        return new Cartesian(scale * x, scale * y);
+    }
+
+    public Cartesian Scale(Cartesian scale)
+    {
+        return new Cartesian(scale.X * x, scale.Y * y);
     }
 
     public Cartesian Transform(Func<double, double> fn)
@@ -70,6 +75,11 @@ public class Cartesian
     public Polar ToPolar()
     {
         return new Polar(this);
+    }
+
+    public Cartesian ToCartesian()
+    {
+        return this;
     }
 
     public double X { get { return x; } }

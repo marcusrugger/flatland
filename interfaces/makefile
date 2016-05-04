@@ -5,6 +5,7 @@ SOURCE = 	algorithms.cs					\
 			color.colorb.cs					\
 			color.colorf.cs					\
 			color.colord.cs					\
+			coordinate.cs					\
 			point.cs						\
 			cartesian.cs					\
 			polar.cs						\
@@ -12,7 +13,8 @@ SOURCE = 	algorithms.cs					\
 			context.cs						\
 			canvas.cs						\
 			wireframe.cs					\
-			matrix33.cs
+			matrix33.cs						\
+			transformer.cs
 
 
 NUNIT_VERSION		=	nunit-3.2.1

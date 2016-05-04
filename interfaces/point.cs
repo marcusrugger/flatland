@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-public class Point
+public class Point : Coordinate
 {
     readonly int x;
     readonly int y;
@@ -19,6 +19,9 @@ public class Point
         this.x = x;
         this.y = y;
     }
+    
+    public Point(Polar p) : this(p.ToCartesian())
+    {}
 
     public Point(Cartesian p)
     {
@@ -34,6 +37,16 @@ public class Point
     public Point Offset(int x, int y)
     {
         return new Point(this.x + x, this.y + y);
+    }
+
+    public Point ToPoint()
+    {
+        return this;
+    }
+
+    public Polar ToPolar()
+    {
+        return new Polar(this);
     }
 
     public Cartesian ToCartesian()
