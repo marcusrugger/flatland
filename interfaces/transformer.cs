@@ -9,6 +9,11 @@ public class Transformer
     readonly Cartesian scale;
     readonly Cartesian offset;
     readonly double angle;
+    
+    public Transformer Create()
+    {
+        return new Transformer();
+    }
 
     public Transformer()
     {
