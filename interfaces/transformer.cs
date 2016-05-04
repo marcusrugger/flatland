@@ -10,7 +10,7 @@ public class Transformer
     readonly Cartesian offset;
     readonly double angle;
     
-    public Transformer Create()
+    public static Transformer Create()
     {
         return new Transformer();
     }
