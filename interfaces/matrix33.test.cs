@@ -101,6 +101,46 @@ class Matrix33Test
     }
 
     [Test]
+    public void RotatePoint30()
+    {
+        var m = Matrix33.Rotate( Algorithms.ToRadians(30) );
+        var a = new Cartesian(100.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That( IsApproximately(b.X,  36.603, 0.001) );
+        Assert.That( IsApproximately(b.Y, 136.603, 0.001) );
+    }
+
+    [Test]
+    public void RotatePoint60()
+    {
+        var m = Matrix33.Rotate( Algorithms.ToRadians(60) );
+        var a = new Cartesian(100.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That( IsApproximately(b.X, -36.603, 0.001) );
+        Assert.That( IsApproximately(b.Y, 136.603, 0.001) );
+    }
+
+    [Test]
+    public void RotatePoint180()
+    {
+        var m = Matrix33.Rotate( Algorithms.ToRadians(180) );
+        var a = new Cartesian(100.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That( IsApproximately(b.X, -100.0, 0.001) );
+        Assert.That( IsApproximately(b.Y, -100.0, 0.001) );
+    }
+
+    [Test]
+    public void RotatePoint270()
+    {
+        var m = Matrix33.Rotate( Algorithms.ToRadians(270) );
+        var a = new Cartesian(100.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That( IsApproximately(b.X,  100.0, 0.001) );
+        Assert.That( IsApproximately(b.Y, -100.0, 0.001) );
+    }
+
+    [Test]
     public void ScaleAndTranslatePoint()
     {
         var tp = new Cartesian(5.0, 10.0);
@@ -134,5 +174,10 @@ class Matrix33Test
         var b = m.Transform(a);
         Assert.That(b.X, Is.EqualTo(500.0));
         Assert.That(b.Y, Is.EqualTo(200.0));
+    }
+
+    private bool IsApproximately(double value, double expected, double fudge)
+    {
+        return Math.Abs(value - expected) < fudge;
     }
 }
