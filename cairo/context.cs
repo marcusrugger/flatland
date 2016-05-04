@@ -10,16 +10,28 @@ public class Context : Flatland.Context
     readonly Cairo.Color currentLineColor;
     readonly Cairo.Color currentFillColor;
 
+    readonly Transformer transformer;
+
+
     public static Context Create(Cairo.Context context)
     {
         return new Context(context);
     }
 
-    private Context(Cairo.Context context)
+    public static Context Create(Cairo.Context context, Transformer transformer)
+    {
+        return new Context(context, transformer);
+    }
+
+    private Context(Cairo.Context context) : this(context, new Transformer())
+    {}
+
+    private Context(Cairo.Context context, Transformer transformer)
     {
         this.context            = context;
         this.currentLineColor   = new Cairo.Color(0.0, 0.0, 0.0);
         this.currentFillColor   = new Cairo.Color(1.0, 1.0, 1.0);
+        this.transformer        = transformer;
     }
 
     private Context(Context other, Cairo.Color colorLine, Cairo.Color colorFill)
@@ -27,6 +39,7 @@ public class Context : Flatland.Context
         this.context            = other.context;
         this.currentLineColor   = colorLine;
         this.currentFillColor   = colorFill;
+        this.transformer        = other.transformer;
     }
 
     private Cairo.Color ToCairoColor(Flatland.Color color)
@@ -37,7 +50,7 @@ public class Context : Flatland.Context
     
     private Cairo.PointD ToCairoPoint(Coordinate point)
     {
-        Cartesian p = point.ToCartesian();
+        Cartesian p = transformer.Transform( point.ToCartesian() );
         return new Cairo.PointD(p.X, p.Y);
     }
 
@@ -56,8 +69,8 @@ public class Context : Flatland.Context
 
     public void DrawLine(Coordinate a, Coordinate b)
     {
-        Cairo.PointD pt1 = ToCairoPoint(a);
-        Cairo.PointD pt2 = ToCairoPoint(b);
+        var pt1 = ToCairoPoint(a);
+        var pt2 = ToCairoPoint(b);
 
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
@@ -68,7 +81,7 @@ public class Context : Flatland.Context
 
     public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
-        Cairo.PointD pt = ToCairoPoint(point);
+        var pt = ToCairoPoint(point);
 
         context.NewSubPath();
         context.LineWidth = 1.0;

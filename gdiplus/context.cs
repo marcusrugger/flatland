@@ -12,16 +12,29 @@ public class Context : Flatland.Context
     readonly Drawing.Pen         currentPen;
     readonly Drawing.Brush       currentBrush;
 
+    readonly Transformer transfomer;
+
+
     public static Context Create(Drawing.Graphics graphics)
     {
         return new Context(graphics);
     }
 
-    private Context(Drawing.Graphics graphics) : base()
+
+    public static Context Create(Drawing.Graphics graphics, Transformer transformer)
+    {
+        return new Context(graphics, transformer);
+    }
+
+    private Context(Drawing.Graphics graphics) : this(graphics, new Transformer())
+    {}
+
+    private Context(Drawing.Graphics graphics, Transformer transformer)
     {
         this.graphics       = graphics;
         this.currentPen     = Drawing.Pens.Black;
         this.currentBrush   = Drawing.Brushes.White;
+        this.transfomer     = transformer;
     }
 
     private Context(Context other, Drawing.Pen newPen)
@@ -29,6 +42,7 @@ public class Context : Flatland.Context
         this.graphics       = other.graphics;
         this.currentPen     = newPen;
         this.currentBrush   = other.currentBrush;
+        this.transfomer     = other.transfomer;
     }
 
     private Context(Context other, Drawing.Brush newBrush)
@@ -36,6 +50,7 @@ public class Context : Flatland.Context
         this.graphics       = other.graphics;
         this.currentPen     = other.currentPen;
         this.currentBrush   = newBrush;
+        this.transfomer     = other.transfomer;
     }
 
     private Drawing.Brush CreateGdiBrush(Flatland.Color color)
@@ -56,13 +71,13 @@ public class Context : Flatland.Context
 
     private Drawing.Point ToGdiPoint(Flatland.Coordinate point)
     {
-        Flatland.Point fp = point.ToPoint();
+        Flatland.Point fp = transfomer.Transform( point.ToCartesian() ).ToPoint();
         return new Drawing.Point(fp.X, fp.Y);
     }
 
     private Drawing.PointF ToGdiPointF(Flatland.Coordinate point)
     {
-        Flatland.Cartesian fp = point.ToCartesian();
+        Flatland.Cartesian fp = transfomer.Transform( point.ToCartesian() );
         return new Drawing.PointF((float) fp.X, (float) fp.Y);
     }
 
@@ -81,15 +96,15 @@ public class Context : Flatland.Context
 
     public void DrawLine(Coordinate a, Coordinate b)
     {
-        Drawing.Point p1 = ToGdiPoint(a);
-        Drawing.Point p2 = ToGdiPoint(b);
+        var p1 = ToGdiPoint(a);
+        var p2 = ToGdiPoint(b);
 
         graphics.DrawLine(currentPen, p1, p2);
     }
 
     public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
-        Drawing.PointF p = ToGdiPointF(point);
+        var p = ToGdiPointF(point);
 
         Drawing.RectangleF rect = new Drawing.RectangleF( p.X - (float) radius,
                                                           p.Y - (float) radius,

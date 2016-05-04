@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-class Transformer
+public class Transformer
 {
     readonly Matrix33 matrix;
     readonly Cartesian scale;
