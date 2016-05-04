@@ -34,6 +34,12 @@ public class Context : Flatland.Context
         var colord = color.ToColorD();
         return new Cairo.Color( colord.Red, colord.Green, colord.Blue, colord.Alpha );
     }
+    
+    private Cairo.PointD ToCairoPoint(Coordinate point)
+    {
+        Cartesian p = point.ToCartesian();
+        return new Cairo.PointD(p.X, p.Y);
+    }
 
 
     /* Flatland.Context interface */
@@ -48,21 +54,26 @@ public class Context : Flatland.Context
         return new Context(this, this.currentLineColor, ToCairoColor(color));
     }
 
-    public void DrawLine(double ax, double ay, double bx, double by)
+    public void DrawLine(Coordinate a, Coordinate b)
     {
+        Cairo.PointD pt1 = ToCairoPoint(a);
+        Cairo.PointD pt2 = ToCairoPoint(b);
+
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
-        context.MoveTo(ax, ay);
-        context.LineTo(bx, by);
+        context.MoveTo(pt1);
+        context.LineTo(pt2);
         context.Stroke();
     }
 
-    public void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle)
+    public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
+        Cairo.PointD pt = ToCairoPoint(point);
+
         context.NewSubPath();
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
-        context.Arc(x, y, radius, startAngle, startAngle + sweepAngle);
+        context.Arc(pt.X, pt.Y, radius, startAngle, startAngle + sweepAngle);
         context.Stroke();
     }
 }

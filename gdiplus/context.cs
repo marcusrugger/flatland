@@ -54,6 +54,18 @@ public class Context : Flatland.Context
         return Drawing.Color.FromArgb( colorb.Alpha, colorb.Red, colorb.Green, colorb.Blue );
     }
 
+    private Drawing.Point ToGdiPoint(Flatland.Coordinate point)
+    {
+        Flatland.Point fp = point.ToPoint();
+        return new Drawing.Point(fp.X, fp.Y);
+    }
+
+    private Drawing.PointF ToGdiPointF(Flatland.Coordinate point)
+    {
+        Flatland.Cartesian fp = point.ToCartesian();
+        return new Drawing.PointF((float) fp.X, (float) fp.Y);
+    }
+
 
     /* Flatland.Context interface */
 
@@ -67,20 +79,26 @@ public class Context : Flatland.Context
         return new Context( this, CreateGdiBrush(color) );
     }
 
-    public void DrawLine(double ax, double ay, double bx, double by)
+    public void DrawLine(Coordinate a, Coordinate b)
     {
-        graphics.DrawLine(currentPen, (int) ax, (int) ay, (int) bx, (int) by);
+        Drawing.Point p1 = ToGdiPoint(a);
+        Drawing.Point p2 = ToGdiPoint(b);
+
+        graphics.DrawLine(currentPen, p1, p2);
     }
 
-    public void DrawArc(double x, double y, double radius, double startAngle, double sweepAngle)
+    public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
-        Drawing.RectangleF rect = new Drawing.RectangleF((float) (x - radius),
-                                                         (float) (y - radius),
-                                                         (float) (2 * radius),
-                                                         (float) (2 * radius));
+        Drawing.PointF p = ToGdiPointF(point);
+
+        Drawing.RectangleF rect = new Drawing.RectangleF( p.X - (float) radius,
+                                                          p.Y - (float) radius,
+                                                         2.0f * (float) radius,
+                                                         2.0f * (float) radius);
 
         float a = (float) Algorithms.ToDegrees(startAngle);
         float b = (float) Algorithms.ToDegrees(sweepAngle);
+
         graphics.DrawArc(currentPen, rect, a, b);
     }
 }

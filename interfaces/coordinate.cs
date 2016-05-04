@@ -3,7 +3,7 @@ using System;
 namespace Flatland {
 
 
-interface Coordinate
+public interface Coordinate
 {
     Cartesian ToCartesian();
     Polar ToPolar();
