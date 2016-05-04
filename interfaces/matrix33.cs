@@ -45,15 +45,45 @@ public class Matrix33
     public static Matrix33 Multiply(Matrix33 l, Matrix33 r)
     {
         double[,] matrix = new double[3,3];
-        for (int x = 0; x < 3; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                matrix[x,y] = l.matrix[x,0] * r.matrix[0,y] +
-                              l.matrix[x,1] * r.matrix[1,y] +
-                              l.matrix[x,2] * r.matrix[2,y];
-            }
-        }
+
+        matrix[0,0] = l.matrix[0,0] * r.matrix[0,0] +
+                      l.matrix[0,1] * r.matrix[1,0] +
+                      l.matrix[0,2] * r.matrix[2,0];
+
+        matrix[0,1] = l.matrix[0,0] * r.matrix[0,1] +
+                      l.matrix[0,1] * r.matrix[1,1] +
+                      l.matrix[0,2] * r.matrix[2,1];
+
+        matrix[0,2] = l.matrix[0,0] * r.matrix[0,2] +
+                      l.matrix[0,1] * r.matrix[1,2] +
+                      l.matrix[0,2] * r.matrix[2,2];
+
+
+        matrix[1,0] = l.matrix[1,0] * r.matrix[0,0] +
+                      l.matrix[1,1] * r.matrix[1,0] +
+                      l.matrix[1,2] * r.matrix[2,0];
+
+        matrix[1,1] = l.matrix[1,0] * r.matrix[0,1] +
+                      l.matrix[1,1] * r.matrix[1,1] +
+                      l.matrix[1,2] * r.matrix[2,1];
+
+        matrix[1,2] = l.matrix[1,0] * r.matrix[0,2] +
+                      l.matrix[1,1] * r.matrix[1,2] +
+                      l.matrix[1,2] * r.matrix[2,2];
+
+
+        matrix[2,0] = l.matrix[2,0] * r.matrix[0,0] +
+                      l.matrix[2,1] * r.matrix[1,0] +
+                      l.matrix[2,2] * r.matrix[2,0];
+
+        matrix[2,1] = l.matrix[2,0] * r.matrix[0,1] +
+                      l.matrix[2,1] * r.matrix[1,1] +
+                      l.matrix[2,2] * r.matrix[2,1];
+
+        matrix[2,2] = l.matrix[2,0] * r.matrix[0,2] +
+                      l.matrix[2,1] * r.matrix[1,2] +
+                      l.matrix[2,2] * r.matrix[2,2];
+
         return new Matrix33(matrix);
     }
 
