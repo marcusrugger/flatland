@@ -82,11 +82,12 @@ public class Context : Flatland.Context
     public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
         var pt = ToCairoPoint(point);
+        var r  = transformer.ScaleOnX(radius);
 
         context.NewSubPath();
         context.LineWidth = 1.0;
         context.SetSourceColor(currentLineColor);
-        context.Arc(pt.X, pt.Y, radius, startAngle, startAngle + sweepAngle);
+        context.Arc(pt.X, pt.Y, r, startAngle, startAngle + sweepAngle);
         context.Stroke();
     }
 }

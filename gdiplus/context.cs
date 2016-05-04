@@ -105,11 +105,12 @@ public class Context : Flatland.Context
     public void DrawArc(Coordinate point, double radius, double startAngle, double sweepAngle)
     {
         var p = ToGdiPointF(point);
+        float r = (float) transfomer.ScaleOnX(radius);
 
-        Drawing.RectangleF rect = new Drawing.RectangleF( p.X - (float) radius,
-                                                          p.Y - (float) radius,
-                                                         2.0f * (float) radius,
-                                                         2.0f * (float) radius);
+        Drawing.RectangleF rect = new Drawing.RectangleF( p.X - r,
+                                                          p.Y - r,
+                                                         2.0f * r,
+                                                         2.0f * r);
 
         float a = (float) Algorithms.ToDegrees(startAngle);
         float b = (float) Algorithms.ToDegrees(sweepAngle);
