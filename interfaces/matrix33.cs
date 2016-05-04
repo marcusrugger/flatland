@@ -44,7 +44,17 @@ class Matrix33
 
     public static Matrix33 Multiply(Matrix33 l, Matrix33 r)
     {
-        return new Matrix33(l, r);
+        double[,] matrix = new double[3,3];
+        for (int x = 0; x < 3; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                matrix[x, y] = l.matrix[x, 0] * r.matrix[0, y] +
+                               l.matrix[x, 1] * r.matrix[1, y] +
+                               l.matrix[x, 2] * r.matrix[2, y];
+            }
+        }
+        return new Matrix33(matrix);
     }
 
     public Matrix33()
@@ -56,20 +66,6 @@ class Matrix33
     public Matrix33(double[,] matrix)
     {
         this.matrix = matrix;
-    }
-
-    private Matrix33(Matrix33 l, Matrix33 r)
-    {
-        matrix = new double[3,3];
-        for (int x = 0; x < 3; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                matrix[x, y] = l.matrix[x, 0] * r.matrix[0, y] +
-                               l.matrix[x, 1] * r.matrix[1, y] +
-                               l.matrix[x, 2] * r.matrix[2, y];
-            }
-        }
     }
 
     public double[,] Matrix

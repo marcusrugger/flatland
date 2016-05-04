@@ -103,13 +103,13 @@ class Matrix33Test
     [Test]
     public void ScaleAndTranslatePoint()
     {
-        // var tp = new Cartesian(5.0, 10.0);
-        // var sp = new Cartesian(0.5, 0.25);
-        // var m  = Matrix33.CreateMatrix(sp, tp, 0.0);
-        // var a = new Cartesian(95.0, 90.0);
-        // var b = m.Transform(a);
-        // Assert.That(b.X, Is.EqualTo(50.0));
-        // Assert.That(b.Y, Is.EqualTo(25.0));
+        var tp = new Cartesian(5.0, 10.0);
+        var sp = new Cartesian(0.5, 0.25);
+        var m  = Matrix33.CreateMatrix(sp, tp, 0.0);
+        var a = new Cartesian(100.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That(b.X, Is.EqualTo(55.0));
+        Assert.That(b.Y, Is.EqualTo(35.0));
     }
 
     [Test]
