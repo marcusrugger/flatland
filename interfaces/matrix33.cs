@@ -39,7 +39,7 @@ public class Matrix33
         var scaleM = Scale(scale);
         var deltaM = Translate(delta);
         var angleM = Rotate(angle);
-        return Multiply( angleM, Multiply(deltaM, scaleM) );
+        return Multiply( Multiply(deltaM, scaleM), angleM );
     }
 
     public static Matrix33 Multiply(Matrix33 l, Matrix33 r)
@@ -75,8 +75,6 @@ public class Matrix33
 
     public Cartesian Transform(Cartesian p)
     {
-        // Console.WriteLine("[0,0] = {0,6:N3}, [0,1] = {1,6:N3}, [0,2] = {2,6:N3}", matrix[0,0], matrix[0,1], matrix[0,2]);
-        // Console.WriteLine("[1,0] = {0,6:N3}, [1,1] = {1,6:N3}, [1,2] = {2,6:N3}", matrix[1,0], matrix[1,1], matrix[1,2]);
         double x = matrix[0,0] * p.X + matrix[0,1] * p.Y + matrix[0,2];
         double y = matrix[1,0] * p.X + matrix[1,1] * p.Y + matrix[1,2];
         return new Cartesian(x, y);

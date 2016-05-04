@@ -176,6 +176,18 @@ class Matrix33Test
         Assert.That(b.Y, Is.EqualTo(200.0));
     }
 
+    [Test]
+    public void RotateScaleAndTranslatePoint()
+    {
+        var tp = new Cartesian(500.0, 500.0);
+        var sp = new Cartesian(500.0/1000.0, -500.0/1000.0);
+        var m  = Matrix33.CreateMatrix( sp, tp, Algorithms.ToRadians(30.0) );
+        var a = new Cartesian(500.0, 100.0);
+        var b = m.Transform(a);
+        Assert.That( IsApproximately(b.X, 691.506, 0.001) );
+        Assert.That( IsApproximately(b.Y, 331.699, 0.001) );
+    }
+
     private bool IsApproximately(double value, double expected, double fudge)
     {
         return Math.Abs(value - expected) < fudge;
