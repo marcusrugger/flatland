@@ -10,10 +10,12 @@ public interface Turtle
     Turtle MoveTo(double x, double y);
     Turtle MoveTo(Cartesian position);
     Turtle Move(double distance);
+    Turtle Move(Polar p);
 
     Turtle LineTo(double x, double y);
     Turtle LineTo(Cartesian position);
     Turtle Line(double distance);
+    Turtle Line(Polar p);
 
     Turtle TurnTo(double angle);
     Turtle Turn(double angle);

@@ -77,6 +77,11 @@ public class Turtle : Graphics, Flatland.Turtle
         return MoveTo(newPosition);
     }
 
+    public Flatland.Turtle Move(Polar p)
+    {
+        return Turn(p.A).Move(p.R);
+    }
+
     public Flatland.Turtle TurnTo(double angle)
     {
         return new Turtle(this, angle);
@@ -102,6 +107,11 @@ public class Turtle : Graphics, Flatland.Turtle
     {
         var newPosition = new Polar(angle, distance).ToCartesian().Offset(position);
         return LineTo(newPosition);
+    }
+
+    public Flatland.Turtle Line(Polar p)
+    {
+        return Turn(p.A).Line(p.R);
     }
 
     public Flatland.Turtle PenDown(bool flag)

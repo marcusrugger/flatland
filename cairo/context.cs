@@ -50,7 +50,7 @@ public class Context : Flatland.Context
     
     private Cairo.PointD ToCairoPoint(Coordinate point)
     {
-        Cartesian p = transformer.Transform( point.ToCartesian() );
+        var p = transformer.Transform( point.ToCartesian() );
         return new Cairo.PointD(p.X, p.Y);
     }
 
