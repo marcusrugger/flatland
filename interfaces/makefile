@@ -10,7 +10,6 @@ SOURCE = 	algorithms.cs					\
 			cartesian.cs					\
 			polar.cs						\
 			turtle.cs						\
-			context.cs						\
 			canvas.cs						\
 			wireframe.cs					\
 			matrix33.cs						\

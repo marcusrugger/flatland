@@ -1,6 +1,6 @@
 using System;
 
-namespace Flatland {
+namespace Flatland.Common {
 
 
 public interface Context

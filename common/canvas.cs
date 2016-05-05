@@ -20,11 +20,6 @@ public class Canvas : Flatland.Canvas
 
     /* Flatland.Canvas interface */
 
-    public Context Context
-    {
-        get { return context; }
-    }
-
     public Flatland.Canvas SetLineColor(Color color)
     {
         return new Canvas( context.SetLineColor(color) );

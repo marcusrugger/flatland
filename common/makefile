@@ -1,5 +1,6 @@
 
-SOURCE = 	canvas.cs			\
+SOURCE = 	context.cs			\
+			canvas.cs			\
 			graphics.cs			\
 			turtle.cs			\
 			wireframe.cs

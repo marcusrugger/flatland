@@ -6,7 +6,7 @@ using Drawing = System.Drawing;
 namespace Flatland.GdiPlus {
 
 
-public class Context : Flatland.Context
+public class Context : Flatland.Common.Context
 {
     readonly Drawing.Graphics    graphics;
     readonly Drawing.Pen         currentPen;
@@ -84,12 +84,12 @@ public class Context : Flatland.Context
 
     /* Flatland.Context interface */
 
-    public Flatland.Context SetLineColor(Flatland.Color color)
+    public Flatland.Common.Context SetLineColor(Flatland.Color color)
     {
         return new Context( this, CreateGdiPen(color) );
     }
 
-    public Flatland.Context SetFillColor(Color color)
+    public Flatland.Common.Context SetFillColor(Color color)
     {
         return new Context( this, CreateGdiBrush(color) );
     }

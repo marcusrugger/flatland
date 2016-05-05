@@ -4,7 +4,7 @@ using System;
 namespace Flatland.CairoGraphics {
 
 
-public class Context : Flatland.Context
+public class Context : Flatland.Common.Context
 {
     readonly Cairo.Context context;
     readonly Cairo.Color currentLineColor;
@@ -57,12 +57,12 @@ public class Context : Flatland.Context
 
     /* Flatland.Context interface */
 
-    public Flatland.Context SetLineColor(Flatland.Color color)
+    public Flatland.Common.Context SetLineColor(Flatland.Color color)
     {
         return new Context(this, ToCairoColor(color), this.currentFillColor);
     }
 
-    public Flatland.Context SetFillColor(Flatland.Color color)
+    public Flatland.Common.Context SetFillColor(Flatland.Color color)
     {
         return new Context(this, this.currentLineColor, ToCairoColor(color));
     }
