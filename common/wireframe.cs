@@ -30,12 +30,17 @@ public class Wireframe : Graphics, Flatland.Wireframe
         return this;
     }
 
-    public Flatland.Wireframe Rectangle(double x1, double y1, double x2, double y2)
+    public Flatland.Wireframe Rectangle(double x1, double y1, double width, double height)
     {
-        return Rectangle(new Cartesian(x1, y1), new Cartesian(x2, y2));
+        return Rectangle(new Cartesian(x1, y1), width, height);
     }
 
-    public Flatland.Wireframe Rectangle(Cartesian p11, Cartesian p22)
+    public Flatland.Wireframe Rectangle(Cartesian p1, double width, double height)
+    {
+        return Rectangle(p1, p1.Offset(width, height));
+    }
+
+    private Flatland.Wireframe Rectangle(Cartesian p11, Cartesian p22)
     {
         var p12 = new Cartesian(p11.X, p22.Y);
         var p21 = new Cartesian(p22.X, p11.Y);
@@ -44,11 +49,6 @@ public class Wireframe : Graphics, Flatland.Wireframe
         Context.DrawLine(p22, p21);
         Context.DrawLine(p21, p11);
         return this;
-    }
-
-    public Flatland.Wireframe Rectangle(Cartesian p1, double width, double height)
-    {
-        return Rectangle(p1, p1.Offset(width, height));
     }
 
     public Flatland.Wireframe Circle(double x, double y, double r)
