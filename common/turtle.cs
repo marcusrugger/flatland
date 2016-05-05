@@ -3,9 +3,8 @@ using System;
 namespace Flatland.Common {
 
 
-public class Turtle : Flatland.Turtle
+public class Turtle : Graphics, Flatland.Turtle
 {
-    readonly Context context;
     readonly Cartesian position;
     readonly double angle;
     readonly bool penDown;
@@ -15,49 +14,43 @@ public class Turtle : Flatland.Turtle
         return new Turtle(context);
     }
 
-    private Turtle(Context context)
+    private Turtle(Context context) : base(context)
     {
-        this.context  = context;
         this.position = new Cartesian();
         this.angle    = 0;
         this.penDown  = true;
     }
 
-    private Turtle(Turtle other)
+    private Turtle(Turtle other) : base(other)
     {
-        this.context  = other.context;
         this.position = other.position;
         this.angle    = other.angle;
         this.penDown  = other.penDown;
     }
 
-    private Turtle(Turtle other, Context context)
+    private Turtle(Turtle other, Context context) : base(other, context)
     {
-        this.context  = context;
         this.position = other.position;
         this.angle    = other.angle;
         this.penDown  = other.penDown;
     }
 
-    private Turtle(Turtle other, Cartesian position)
+    private Turtle(Turtle other, Cartesian position) : base(other)
     {
-        this.context  = other.context;
         this.position = position;
         this.angle    = other.angle;
         this.penDown  = other.penDown;
     }
 
-    private Turtle(Turtle other, double angle)
+    private Turtle(Turtle other, double angle) : base(other)
     {
-        this.context  = other.context;
         this.position = other.position;
         this.angle    = angle;
         this.penDown  = other.penDown;
     }
 
-    private Turtle(Turtle other, bool penDown)
+    private Turtle(Turtle other, bool penDown) : base(other)
     {
-        this.context  = other.context;
         this.position = other.position;
         this.angle    = other.angle;
         this.penDown  = penDown;
@@ -65,7 +58,7 @@ public class Turtle : Flatland.Turtle
 
     public Flatland.Turtle SetLineColor(Color color)
     {
-        return new Turtle( this, context.SetLineColor(color) );
+        return new Turtle( this, SetContextLineColor(color) );
     }
 
     public Flatland.Turtle MoveTo(double x, double y)
@@ -101,7 +94,7 @@ public class Turtle : Flatland.Turtle
 
     public Flatland.Turtle LineTo(Cartesian position)
     {
-        context.DrawLine(this.position, position);
+        DrawLine(this.position, position);
         return MoveTo(position);
     }
 
