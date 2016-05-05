@@ -58,7 +58,7 @@ public class Turtle : Graphics, Flatland.Turtle
 
     public Flatland.Turtle SetLineColor(Color color)
     {
-        return new Turtle( this, SetContextLineColor(color) );
+        return new Turtle( this, Context.SetLineColor(color) );
     }
 
     public Flatland.Turtle MoveTo(double x, double y)
@@ -94,7 +94,7 @@ public class Turtle : Graphics, Flatland.Turtle
 
     public Flatland.Turtle LineTo(Cartesian position)
     {
-        DrawLine(this.position, position);
+        Context.DrawLine(this.position, position);
         return MoveTo(position);
     }
 
