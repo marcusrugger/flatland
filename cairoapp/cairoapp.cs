@@ -8,7 +8,7 @@ public class Tides
     {
         Application.Init();
 
-        Func<Cairo.Context, Flatland.Canvas> fn = (c) => Flatland.Common.Canvas.Create( Flatland.CairoGraphics.Context.Create(c) );
+        Func<Cairo.Context, Flatland.Canvas> fn = (c) => Flatland.Core.Canvas.Create( Flatland.CairoGraphics.Context.Create(c) );
         var window = new CairoWindow(fn);
         window.ShowAll(); 
         Application.Run();

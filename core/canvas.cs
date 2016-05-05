@@ -1,6 +1,6 @@
 using System;
 
-namespace Flatland.Common {
+namespace Flatland.Core {
 
 
 public class Canvas : Flatland.Canvas
@@ -32,12 +32,12 @@ public class Canvas : Flatland.Canvas
 
     public Flatland.Turtle Turtle()
     {
-        return Common.Turtle.Create(context);
+        return Core.Turtle.Create(context);
     }
 
     public Flatland.Wireframe Wireframe()
     {
-        return Common.Wireframe.Create(context);
+        return Core.Wireframe.Create(context);
     }
 }
 

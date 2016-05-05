@@ -1,6 +1,6 @@
 using System;
 
-namespace Flatland.Common {
+namespace Flatland.Core {
 
 
 public class Wireframe : Graphics, Flatland.Wireframe

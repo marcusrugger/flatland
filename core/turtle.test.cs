@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using System;
-using Flatland.Common;
+using Flatland.Core;
 
 
 [TestFixture]
