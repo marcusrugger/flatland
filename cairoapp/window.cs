@@ -65,6 +65,7 @@ class CairoWindow : Window
         var wireframe = canvas.Wireframe().SetLineColor(Colors.Green);
         wireframe.Line(100, 100, 200, 100);
         wireframe.SetLineColor(Colors.Red).Circle(500, 500, 100);
+        wireframe.SetLineColor(Colors.Yellow).Rectangle(10, 10, 200, 200);
     }
 
 }

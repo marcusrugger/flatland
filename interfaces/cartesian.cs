@@ -42,6 +42,11 @@ public class Cartesian : Coordinate
         return new Cartesian(ls.x - rs.x, ls.y - rs.y);
     }
 
+    public Cartesian Offset(double dx, double dy)
+    {
+        return new Cartesian(x + dx, y + dy);
+    }
+
     public Cartesian Offset(Cartesian other)
     {
         return new Cartesian(x + other.x, y + other.y);
