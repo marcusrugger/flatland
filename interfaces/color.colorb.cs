@@ -18,15 +18,7 @@ public class ColorB : Color
         alpha   = 255;
     }
 
-    public ColorB(byte r, byte g, byte b)
-    {
-        red     = r;
-        green   = g;
-        blue    = b;
-        alpha   = 255;
-    }
-
-    public ColorB(byte r, byte g, byte b, byte a)
+    public ColorB(byte r, byte g, byte b, byte a = 255)
     {
         red     = r;
         green   = g;
@@ -44,10 +36,10 @@ public class ColorB : Color
 
     public ColorB(ColorF color)
     {
-        red     = (byte) (255.0 * color.Red   + 0.5);
-        green   = (byte) (255.0 * color.Green + 0.5);
-        blue    = (byte) (255.0 * color.Blue  + 0.5);
-        alpha   = (byte) (255.0 * color.Alpha + 0.5);
+        red     = (byte) (255.0f * color.Red   + 0.5f);
+        green   = (byte) (255.0f * color.Green + 0.5f);
+        blue    = (byte) (255.0f * color.Blue  + 0.5f);
+        alpha   = (byte) (255.0f * color.Alpha + 0.5f);
     }
 
     public ColorD ToColorD()

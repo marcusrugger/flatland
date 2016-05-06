@@ -20,15 +20,7 @@ public class ColorF : Color
         alpha   = 1.0f;
     }
 
-    public ColorF(float r, float g, float b)
-    {
-        red     = Crop(r);
-        green   = Crop(g);
-        blue    = Crop(b);
-        alpha   = 1.0f;
-    }
-
-    public ColorF(float r, float g, float b, float a)
+    public ColorF(float r, float g, float b, float a = 1.0f)
     {
         red     = Crop(r);
         green   = Crop(g);
@@ -45,11 +37,15 @@ public class ColorF : Color
     }
 
     public ColorF(ColorB color)
+    : this(color.Red, color.Green, color.Blue, color.Alpha)
+    {}
+
+    public ColorF(byte red, byte green, byte blue, byte alpha = 255)
     {
-        red     = ((float) color.Red)   / 255.0f;
-        green   = ((float) color.Green) / 255.0f;
-        blue    = ((float) color.Blue)  / 255.0f;
-        alpha   = ((float) color.Alpha) / 255.0f;
+        this.red     = ((float) red)   / 255.0f;
+        this.green   = ((float) green) / 255.0f;
+        this.blue    = ((float) blue)  / 255.0f;
+        this.alpha   = ((float) alpha) / 255.0f;
     }
 
     private float Crop(float value)

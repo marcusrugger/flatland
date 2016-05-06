@@ -20,15 +20,7 @@ public class ColorD : Color
         alpha   = 1.0;
     }
 
-    public ColorD(double r, double g, double b)
-    {
-        red     = Crop(r);
-        green   = Crop(g);
-        blue    = Crop(b);
-        alpha   = 1.0;
-    }
-
-    public ColorD(double r, double g, double b, double a)
+    public ColorD(double r, double g, double b, double a = 1.0)
     {
         red     = Crop(r);
         green   = Crop(g);
@@ -45,11 +37,15 @@ public class ColorD : Color
     }
 
     public ColorD(ColorB color)
+    : this(color.Red, color.Green, color.Blue, color.Alpha)
+    {}
+
+    public ColorD(byte red, byte green, byte blue, byte alpha = 255)
     {
-        red     = ((double) color.Red)   / 255.0;
-        green   = ((double) color.Green) / 255.0;
-        blue    = ((double) color.Blue)  / 255.0;
-        alpha   = ((double) color.Alpha) / 255.0;
+        this.red     = ((double) red)   / 255.0;
+        this.green   = ((double) green) / 255.0;
+        this.blue    = ((double) blue)  / 255.0;
+        this.alpha   = ((double) alpha) / 255.0;
     }
 
     private double Crop(double value)
