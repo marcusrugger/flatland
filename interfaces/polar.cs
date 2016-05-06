@@ -51,6 +51,11 @@ public class Polar : Coordinate
             return 3.0 * Math.PI / 2.0;
     }
 
+    public Polar TransformR(Func<double, double> fn)
+    {
+        return new Polar(a, fn(r));
+    }
+
     public Point ToPoint()
     {
         return new Point(this);
@@ -64,11 +69,6 @@ public class Polar : Coordinate
     public Cartesian ToCartesian()
     {
         return new Cartesian(this);
-    }
-
-    public Polar TransformR(Func<double, double> fn)
-    {
-        return new Polar(a, fn(r));
     }
 
     public double A { get { return a; } }

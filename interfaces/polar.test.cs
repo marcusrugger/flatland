@@ -34,8 +34,31 @@ class PolarTest
         Cartesian cp = new Cartesian(x, y);
         Polar pp = new Polar(cp);
 
-        Assert.That(Math.Abs(pp.A - expected_a), Is.LessThan(1e-6));        
-        Assert.That(Math.Abs(pp.R - expected_r), Is.LessThan(1e-6));
+        Assert.That( IsApproximately(pp.A, expected_a, 1e-6) );        
+        Assert.That( IsApproximately(pp.R, expected_r, 1e-6) );
+    }
+
+    [Test]
+    public void TransformR()
+    {
+        Polar p = new Polar(Math.PI/4.0, 1.0);
+        Polar n = p.TransformR(r => 2*r);
+        Assert.That(n.R, Is.EqualTo(2.0));
+        Assert.That(p.R, Is.EqualTo(1.0));
+    }
+
+    [Test]
+    public void ToPoint()
+    {
+        var p = new Polar(0.0, 1.0);
+        var c = p.ToPoint();
+
+        Assert.That(c, Is.InstanceOf(typeof(Point)));
+        Assert.That(c.X, Is.EqualTo(1));
+        Assert.That(c.Y, Is.EqualTo(0));
+
+        Assert.That(p.A, Is.EqualTo(0));
+        Assert.That(p.R, Is.EqualTo(1));
     }
 
     [Test]
@@ -53,11 +76,19 @@ class PolarTest
     }
 
     [Test]
-    public void TransformR()
+    public void ToPolar()
     {
-        Polar p = new Polar(Math.PI/4.0, 1.0);
-        Polar n = p.TransformR(r => 2*r);
-        Assert.That(n.R, Is.EqualTo(2.0));
-        Assert.That(p.R, Is.EqualTo(1.0));
+        Polar p = new Polar(0.0, 1.0);
+        var   c = p.ToPolar();
+
+        Assert.That(c, Is.InstanceOf(typeof(Polar)));
+        Assert.That(c.A, Is.EqualTo(0.0));
+        Assert.That(c.R, Is.EqualTo(1.0));
     }
+
+    private bool IsApproximately(double value, double expected, double fudge)
+    {
+        return Math.Abs(value - expected) < fudge;
+    }
+
 }
