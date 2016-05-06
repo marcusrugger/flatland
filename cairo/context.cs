@@ -34,6 +34,14 @@ public class Context : Flatland.Core.Context
         this.transformer        = transformer;
     }
 
+    private Context(Context other, Transformer transformer)
+    {
+        this.context            = other.context;
+        this.currentLineColor   = other.currentLineColor;
+        this.currentFillColor   = other.currentFillColor;
+        this.transformer        = transformer;
+    }
+
     private Context(Context other, Cairo.Color colorLine, Cairo.Color colorFill)
     {
         this.context            = other.context;
@@ -56,6 +64,11 @@ public class Context : Flatland.Core.Context
 
 
     /* Flatland.Context interface */
+
+    public Flatland.Core.Context SetTransformer(Transformer transformer)
+    {
+        return new Context(this, transformer);
+    }
 
     public Flatland.Core.Context SetLineColor(Flatland.Color color)
     {

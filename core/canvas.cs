@@ -20,6 +20,11 @@ public class Canvas : Flatland.Canvas
 
     /* Flatland.Canvas interface */
 
+    public Flatland.Canvas SetTransformer(Transformer transformer)
+    {
+        return new Canvas( context.SetTransformer(transformer) );
+    }
+
     public Flatland.Canvas SetLineColor(Color color)
     {
         return new Canvas( context.SetLineColor(color) );

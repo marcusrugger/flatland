@@ -37,6 +37,14 @@ public class Context : Flatland.Core.Context
         this.transfomer     = transformer;
     }
 
+    private Context(Context other, Transformer transformer)
+    {
+        this.graphics       = other.graphics;
+        this.currentPen     = other.currentPen;
+        this.currentBrush   = other.currentBrush;
+        this.transfomer     = transfomer;
+    }
+
     private Context(Context other, Drawing.Pen newPen)
     {
         this.graphics       = other.graphics;
@@ -83,6 +91,11 @@ public class Context : Flatland.Core.Context
 
 
     /* Flatland.Context interface */
+
+    public Flatland.Core.Context SetTransformer(Transformer transformer)
+    {
+        return new Context(this, transformer);
+    }
 
     public Flatland.Core.Context SetLineColor(Flatland.Color color)
     {
