@@ -67,11 +67,6 @@ public class Cartesian : Coordinate
         return new Cartesian(scale.X * x, scale.Y * y);
     }
 
-    public Cartesian Transform(Func<double, double> fn)
-    {
-        return new Cartesian(fn(x), fn(y));
-    }
-
     public Point ToPoint()
     {
         return new Point(this);
