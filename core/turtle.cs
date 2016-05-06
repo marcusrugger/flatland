@@ -150,6 +150,11 @@ public class Turtle : Graphics, Flatland.Turtle
             return Move(distance);
     }
 
+    public Flatland.Turtle PenMove(Polar p)
+    {
+        return Turn(p.A).PenMove(p.R);
+    }
+
 }
 
 }

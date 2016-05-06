@@ -26,6 +26,7 @@ public interface Turtle
     Turtle PenMoveTo(double x, double y);
     Turtle PenMoveTo(Cartesian position);
     Turtle PenMove(double distance);
+    Turtle PenMove(Polar p);
 }
 
 }
